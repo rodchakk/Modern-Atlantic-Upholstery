@@ -142,5 +142,9 @@
 
     <!-- Bootstrap JS (con defer para mejorar el rendimiento) -->
     <script src="js/bootstrap.bundle.min.js" defer></script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que el evento se propague al carrusel
+        // Tu código para mostrar/ocultar el menú aquí
+      });
 </body>
 </html>

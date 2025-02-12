@@ -4,4 +4,23 @@
 
     body {
         font-family: 'Merriweather', serif;
+        font-weight: 800;
+        font-style: normal;
     }
+
+
+
+
+
+    /* Estilo para las imágenes del carrusel */
+.carousel-item img {
+    max-width: 38%; /* Ajusta este valor según el tamaño deseado */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/* Asegura que el botón del menú esté por encima del carrusel */
+.navbar-toggler {
+    z-index: 1000; /* Un valor alto para asegurar que esté por encima */
+    position: relative; /* Necesario para que z-index funcione */
+}
