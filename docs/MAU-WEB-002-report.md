@@ -17,11 +17,13 @@ Rather than create a duplicate repository, V2 is founded on a dedicated branch o
 ## Stack
 
 - Astro `7.2.9`
-- TypeScript `7.0.2`
+- TypeScript `6.0.2`
 - `@astrojs/check` `0.9.10`
 - `@astrojs/sitemap` `3.7.3`
 - Wrangler `4.127.1`
 - Node target `22.20.0`
+
+TypeScript 7 was initially selected because it is the current stable TypeScript release, but CI correctly rejected it: `@astrojs/check@0.9.10` currently declares peer support for TypeScript 5 or 6. The branch therefore pins TypeScript `6.0.2` rather than bypassing peer-dependency safety with `--force` or `--legacy-peer-deps`.
 
 No React, Tailwind, CMS, database, PHP, or WordPress runtime is introduced.
 
@@ -88,12 +90,18 @@ No Cloudflare account, paid resource, production hostname, DNS, Wix, Bluehost, W
 
 Local package installation cannot be executed from the ChatGPT container because outbound package/network resolution is unavailable.
 
-Repository CI is included to execute:
+Repository CI executes:
 
 1. `npm install --no-audit --no-fund`
 2. `npm run check`
 3. `npm run build`
 4. `npm run verify:build`
+
+### CI history
+
+- Run 1 failed during dependency resolution because TypeScript `7.0.2` was outside the peer range supported by `@astrojs/check@0.9.10` (`^5.0.0 || ^6.0.0`).
+- The dependency was corrected to TypeScript `6.0.2` without disabling npm peer-dependency checks.
+- Final CI result is recorded in the pull request checks after the corrected commit.
 
 The pull request workflow result is the authoritative executable validation for this mission.
 
