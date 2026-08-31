@@ -1,16 +1,39 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About Us"
-  description="About Modern Atlantic Upholstery and Victor Terzi, whose current public profile describes nearly 20 years of upholstery experience."
+  title="About Victor Terzi & Modern Atlantic Upholstery"
+  description="Meet Victor Terzi and learn about the automotive roots, restoration mindset, and hands-on upholstery craft behind Modern Atlantic Upholstery in Matthews, NC."
 >
-  <RouteFoundation
-    eyebrow="About Us"
-    title="Meet Victor Terzi."
-    description="The existing public site describes Victor Terzi as having nearly 20 years in upholstery, beginning in automotive work and later expanding into furniture upholstery. The current page also says his craftsmanship helped two cars earn first place in a European interior-design competition."
-    note="This legacy biography is preserved as source material and should be re-confirmed with Victor before final launch copy is approved."
+  <PageIntro
+    eyebrow="About Modern Atlantic"
+    title="A shop built around the satisfaction of making something useful feel right again."
+    lede="Modern Atlantic Upholstery is led by Victor Terzi, whose path in upholstery began with automotive interiors and expanded into furniture, marine, commercial, and custom work."
+    image="/legacy-repo/MAU-02.png"
+    imageAlt="Modern Atlantic Upholstery brand artwork"
   />
+
+  <section class="section section-paper">
+    <div class="container story-grid story-grid-large">
+      <div><p class="eyebrow">Victor Terzi</p><h2>Automotive roots. A restoration mindset.</h2></div>
+      <div class="story-copy">
+        <p>Victor began in automotive upholstery, learning the craft through interiors where fit, finish, and small details are hard to hide. Over time, that work expanded into furniture and other upholstery projects.</p>
+        <p>What connects those categories is the transformation: taking an interior or piece that is worn, dated, damaged, or simply no longer right for its owner and giving it another useful chapter.</p>
+        <p>Today, Modern Atlantic works from Matthews, North Carolina and serves customers across the Charlotte area. The shop handles automotive, marine, furniture, and commercial upholstery with the project itself — not a one-size-fits-all package — as the starting point.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container values-grid">
+      <article><span class="feature-number">01</span><h3>Look closely</h3><p>The condition, shape, surrounding interior, and intended use all matter before choosing a direction.</p></article>
+      <article><span class="feature-number">02</span><h3>Respect the piece</h3><p>Good restoration keeps what is worth keeping and changes what needs to change.</p></article>
+      <article><span class="feature-number">03</span><h3>Finish with intention</h3><p>The goal is not simply new material. It is a finished result that feels coherent in the space.</p></article>
+    </div>
+  </section>
+
+  <QuoteCta />
 </BaseLayout>

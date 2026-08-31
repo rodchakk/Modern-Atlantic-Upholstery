@@ -1,54 +1,134 @@
 ---
+import QuoteCta from '../components/QuoteCta.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import { SERVICES, SITE } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Modern Atlantic Upholstery"
-  description="Modern Atlantic Upholstery is an upholstery shop in Matthews, North Carolina, offering automotive, marine, furniture, and commercial upholstery work."
+  title="Upholstery Shop in Matthews & Charlotte, NC"
+  description="Automotive, marine, furniture, and commercial upholstery from Modern Atlantic Upholstery in Matthews, serving the Charlotte area. View our work or start a quote."
 >
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">MAU V2 Foundation</p>
-      <h1>Craftsmanship built around the project.</h1>
-      <p class="lede">
-        Modern Atlantic Upholstery works across automotive, marine, furniture, and
-        commercial upholstery from its Matthews, North Carolina service center.
-        This V2 branch is a staging foundation and does not replace the current
-        production website.
-      </p>
-      <div class="actions">
-        <a class="button" href="/services/">Explore services</a>
-        <a class="button secondary" href="/contact/">Contact Modern Atlantic</a>
+  <section class="home-hero section-dark">
+    <div class="container home-hero-grid">
+      <div class="home-hero-copy">
+        <p class="eyebrow eyebrow-light">Matthews, NC · Serving the Charlotte area</p>
+        <h1>Upholstery made for the way you use it.</h1>
+        <p class="lede lede-light">
+          From vehicle interiors and boat seating to furniture and commercial spaces,
+          Modern Atlantic brings hands-on upholstery craftsmanship to projects that deserve a better next chapter.
+        </p>
+        <div class="actions">
+          <a class="button button-light" href="/contact/">Request a quote</a>
+          <a class="button button-ghost-light" href="/portfolio/">See our work</a>
+        </div>
+      </div>
+
+      <div class="hero-collage" aria-label="Modern Atlantic Upholstery project photography">
+        <figure class="hero-photo hero-photo-main">
+          <img src="/legacy-repo/sofas.jpg" alt="Completed upholstered furniture project" decoding="async" />
+        </figure>
+        <figure class="hero-photo hero-photo-top">
+          <img src="/legacy-repo/bout.jpg" alt="Completed marine upholstery project" decoding="async" />
+        </figure>
+        <figure class="hero-photo hero-photo-bottom">
+          <img src="/legacy-repo/moto.jpg" alt="Completed motorcycle upholstery project" decoding="async" />
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="proof-strip" aria-label="Business highlights">
+    <div class="container proof-grid">
+      <div><strong>{SITE.google.rating}</strong><span>Google rating</span></div>
+      <div><strong>{SITE.google.reviewCount}</strong><span>Google reviews</span></div>
+      <div><strong>4</strong><span>Core service categories</span></div>
+      <div><strong>Matthews</strong><span>North Carolina service center</span></div>
+    </div>
+  </section>
+
+  <section class="section section-paper">
     <div class="container">
-      <p class="eyebrow">Service architecture</p>
-      <div class="grid services">
-        <ServiceCard
-          title="Automotive Upholstery"
-          description="Foundation route for automotive interiors, restoration, and related work."
-          href="/automotive-upholstery/"
-        />
-        <ServiceCard
-          title="Marine Upholstery"
-          description="Foundation route for boat and marine upholstery work."
-          href="/marine-upholstery/"
-        />
-        <ServiceCard
-          title="Furniture Upholstery"
-          description="Foundation route for furniture upholstery and reupholstery."
-          href="/furniture-upholstery/"
-        />
-        <ServiceCard
-          title="Commercial Upholstery"
-          description="Foundation route for upholstery work for businesses and shared spaces."
-          href="/commercial-upholstery/"
-        />
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h2>One upholstery shop. Four ways we can help.</h2>
+        </div>
+        <p>
+          The work changes from project to project, but the goal stays the same: a clean result that respects the piece, the space, and how it will be used.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        {SERVICES.map((service) => (
+          <ServiceCard
+            title={service.name}
+            description={service.short}
+            href={service.href}
+            image={service.image}
+            imageAlt={`Modern Atlantic ${service.name.toLowerCase()} project`}
+          />
+        ))}
       </div>
     </div>
   </section>
+
+  <section class="section workshop-section">
+    <div class="container workshop-grid">
+      <div class="workshop-media">
+        <img src="/legacy-repo/table_chairs.jpg" alt="Completed furniture upholstery project" loading="lazy" decoding="async" />
+      </div>
+      <div class="workshop-copy">
+        <p class="eyebrow">Built around the project</p>
+        <h2>Restoration when it matters. Custom work when the project calls for it.</h2>
+        <p>
+          Modern Atlantic works across different kinds of interiors instead of forcing every job into the same template. The first step is understanding what you have, what you want to change, and where the finished piece needs to perform.
+        </p>
+        <ul class="check-list">
+          <li>Automotive interiors and restoration work</li>
+          <li>Boat seating and marine upholstery</li>
+          <li>Furniture reupholstery and custom pieces</li>
+          <li>Commercial seating and business furniture</li>
+        </ul>
+        <a class="text-link" href="/services/">Explore all services <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper">
+    <div class="container story-grid">
+      <div>
+        <p class="eyebrow">Meet Victor Terzi</p>
+        <h2>A craft shaped by automotive interiors and a love of giving pieces another life.</h2>
+      </div>
+      <div class="story-copy">
+        <p>
+          Victor’s upholstery work began in automotive interiors and later expanded into furniture and other custom projects. That mix of restoration and custom work is still at the center of Modern Atlantic today.
+        </p>
+        <p>
+          The current shop in Matthews serves customers across the Charlotte area with a direct, project-first approach: show us what you are working with, tell us what you want to change, and start the conversation from there.
+        </p>
+        <a class="text-link" href="/about-us/">Read Victor’s story <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section portfolio-preview">
+    <div class="container">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Recent work</p>
+          <h2>Different materials. Different spaces. The same attention to finish.</h2>
+        </div>
+        <a class="text-link" href="/portfolio/">View portfolio <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="preview-gallery">
+        <figure><img src="/legacy-repo/bout2.jpg" alt="Marine upholstery project" loading="lazy" decoding="async" /></figure>
+        <figure><img src="/legacy-repo/longchair.jpg" alt="Furniture upholstery project" loading="lazy" decoding="async" /></figure>
+        <figure><img src="/legacy-repo/Commercial.jpg" alt="Commercial upholstery project" loading="lazy" decoding="async" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <QuoteCta />
 </BaseLayout>

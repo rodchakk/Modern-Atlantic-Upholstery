@@ -1,16 +1,43 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Automotive Upholstery"
-  description="Foundation route for automotive upholstery and interior work. Final service claims, project examples, and conversion copy will be curated in the content and visual-system mission."
+  title="Automotive Upholstery in Matthews & Charlotte, NC"
+  description="Automotive upholstery, interior restoration, seats, headliners, panels, and custom interior work from Modern Atlantic Upholstery in Matthews, NC."
 >
-  <RouteFoundation
+  <PageIntro
     eyebrow="Automotive upholstery"
-    title="Automotive Upholstery"
-    description="Foundation route for automotive upholstery and interior work. Final service claims, project examples, and conversion copy will be curated in the content and visual-system mission."
-    note="Content foundation only — no new production claims are introduced in MAU-WEB-002."
+    title="Make the interior feel worth getting back into."
+    lede="Modern Atlantic works on automotive interiors that need restoration, repair, or a more personal finish — from seating and headliners to panels and custom interior details."
+    image="/legacy-repo/moto.jpg"
+    imageAlt="Completed motorcycle upholstery project"
   />
+
+  <section class="section section-paper">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">Automotive work</p>
+        <h2>Interior work with the whole cabin in mind.</h2>
+      </div>
+      <div class="detail-copy">
+        <p>Automotive upholstery is more than replacing a surface. Color, texture, fit, wear, and the surrounding interior all affect whether the finished work feels intentional.</p>
+        <div class="tag-list" aria-label="Automotive upholstery services">
+          <span>Seats</span><span>Headliners</span><span>Interior panels</span><span>Interior restoration</span><span>Classic cars</span><span>Custom interiors</span><span>Motorcycles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-grid">
+      <article><span class="feature-number">01</span><h3>Restore</h3><p>Bring worn, damaged, or aging interior surfaces back into a cleaner, more complete condition.</p></article>
+      <article><span class="feature-number">02</span><h3>Refresh</h3><p>Update the feel of an interior while respecting the vehicle and the parts that still work well.</p></article>
+      <article><span class="feature-number">03</span><h3>Customize</h3><p>Shape the material, color, and detailing around the character you want the interior to have.</p></article>
+    </div>
+  </section>
+
+  <QuoteCta eyebrow="Automotive project?" title="Send the vehicle, the area you want to change, and a few photos." />
 </BaseLayout>

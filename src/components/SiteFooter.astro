@@ -1,24 +1,43 @@
 ---
-import { SITE } from '../config/site';
+import { SERVICES, SITE } from '../config/site';
+
+const year = new Date().getFullYear();
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${SITE.address.street}, ${SITE.address.locality}, ${SITE.address.region} ${SITE.address.postalCode}`,
+)}`;
 ---
 
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <strong>{SITE.name}</strong>
-      <p>Upholstery shop in Matthews, North Carolina.</p>
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <p class="eyebrow eyebrow-light">Modern Atlantic Upholstery</p>
+      <h2>Bring the project. We’ll talk through the possibilities.</h2>
+      <a class="button button-light" href="/contact/">Start a quote</a>
     </div>
-    <div>
-      <strong>Contact</strong>
-      <p><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></p>
-      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+
+    <div class="footer-columns">
+      <div>
+        <h3>Services</h3>
+        <ul>
+          {SERVICES.map((service) => <li><a href={service.href}>{service.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a href={mapsHref} rel="noopener noreferrer">{SITE.address.street}<br />{SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}</a></p>
+      </div>
+      <div>
+        <h3>Follow</h3>
+        <p><a href={SITE.social.instagram} rel="noopener noreferrer">Instagram</a></p>
+        <p><a href={SITE.social.facebook} rel="noopener noreferrer">Facebook</a></p>
+      </div>
     </div>
-    <div>
-      <strong>Service Center</strong>
-      <p>{SITE.address.street}</p>
-      <p>
-        {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
-      </p>
-    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {SITE.name}. All rights reserved.</p>
+    <p>Website by Minerva Technologies.</p>
   </div>
 </footer>

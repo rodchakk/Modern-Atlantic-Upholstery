@@ -1,16 +1,37 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Marine Upholstery"
-  description="Foundation route for boat and marine upholstery. Final materials, scope, project examples, and service-area copy require content curation before launch."
+  title="Boat & Marine Upholstery in Matthews & Charlotte, NC"
+  description="Boat seating, cushions, and custom marine upholstery from Modern Atlantic Upholstery in Matthews, serving the Charlotte area."
 >
-  <RouteFoundation
+  <PageIntro
     eyebrow="Marine upholstery"
-    title="Marine Upholstery"
-    description="Foundation route for boat and marine upholstery. Final materials, scope, project examples, and service-area copy require content curation before launch."
-    note="Content foundation only — no new production claims are introduced in MAU-WEB-002."
+    title="Boat upholstery that belongs in the space."
+    lede="Seating and cushions take a lot of the visual weight in a boat interior. Modern Atlantic approaches marine upholstery as part of the full space, balancing the shape, finish, and way the seating is used."
+    image="/legacy-repo/bout2.jpg"
+    imageAlt="Completed boat upholstery project"
   />
+
+  <section class="section section-paper">
+    <div class="container detail-grid">
+      <div><p class="eyebrow">Marine work</p><h2>Refresh the seating without losing the character of the boat.</h2></div>
+      <div class="detail-copy">
+        <p>Whether the goal is to replace worn upholstery or update the look of the interior, the project starts with the existing shapes, the condition of the seating, and how you want the finished space to feel.</p>
+        <div class="tag-list" aria-label="Marine upholstery services"><span>Boat seating</span><span>Cushions</span><span>Custom marine upholstery</span><span>Interior seating areas</span><span>Upholstery replacement</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section image-band">
+    <div class="container image-band-grid">
+      <img src="/legacy-repo/bout.jpg" alt="Marine upholstery work" loading="lazy" decoding="async" />
+      <div><p class="eyebrow">Start with the current condition</p><h2>Photos help us see the layout, wear, and scope before the conversation goes further.</h2><a class="text-link" href="/contact/">Start a marine quote <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <QuoteCta eyebrow="Marine project?" title="Show us the seating and tell us what you want to change." />
 </BaseLayout>

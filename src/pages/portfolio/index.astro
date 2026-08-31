@@ -1,15 +1,41 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = [
+  { src: '/legacy-repo/bout.jpg', label: 'Marine', alt: 'Completed marine upholstery project' },
+  { src: '/legacy-repo/bout2.jpg', label: 'Marine', alt: 'Completed boat upholstery project' },
+  { src: '/legacy-repo/moto.jpg', label: 'Motorcycle', alt: 'Completed motorcycle upholstery project' },
+  { src: '/legacy-repo/sofas.jpg', label: 'Furniture', alt: 'Completed sofa upholstery project' },
+  { src: '/legacy-repo/longchair.jpg', label: 'Furniture', alt: 'Completed chair upholstery project' },
+  { src: '/legacy-repo/table_chairs.jpg', label: 'Furniture', alt: 'Completed dining chair upholstery project' },
+  { src: '/legacy-repo/Commercial.jpg', label: 'Commercial', alt: 'Completed commercial upholstery project' },
+];
 ---
 
 <BaseLayout
-  title="Portfolio"
-  description="Portfolio foundation for verified Modern Atlantic Upholstery project photography and project context."
+  title="Upholstery Portfolio"
+  description="View automotive, marine, furniture, and commercial upholstery work from Modern Atlantic Upholstery in Matthews, North Carolina."
 >
-  <RouteFoundation
+  <PageIntro
     eyebrow="Portfolio"
-    title="Real work will lead the story."
-    description="The production site already contains useful automotive, marine, residential, and commercial project photography. MAU-WEB-002 inventories those assets; MAU-WEB-003 will curate verified projects instead of fabricating examples."
+    title="The work is the proof."
+    lede="A selection of upholstery projects across marine, vehicle, furniture, and commercial work. The portfolio will continue to grow as the V2 media library is curated from the original project archive."
+    image="/legacy-repo/Untitled (Website).png"
+    imageAlt="Modern Atlantic Upholstery project work"
   />
+
+  <section class="section section-paper">
+    <div class="container masonry-grid">
+      {projects.map((project, index) => (
+        <figure class:list={['portfolio-item', index % 3 === 0 && 'portfolio-item-wide']}>
+          <img src={project.src} alt={project.alt} loading="lazy" decoding="async" />
+          <figcaption>{project.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <QuoteCta />
 </BaseLayout>

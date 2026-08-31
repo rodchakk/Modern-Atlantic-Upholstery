@@ -1,38 +1,58 @@
 ---
 import { SITE } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${SITE.address.street}, ${SITE.address.locality}, ${SITE.address.region} ${SITE.address.postalCode}`,
+)}`;
+const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atlantic Upholstery quote request')}`;
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Contact Modern Atlantic Upholstery in Matthews, North Carolina by phone or email."
+  title="Request an Upholstery Quote"
+  description="Contact Modern Atlantic Upholstery in Matthews, NC. Call, email project photos, get directions, or prepare a quote request for automotive, marine, furniture, or commercial upholstery."
 >
-  <section class="page-shell">
-    <div class="container">
-      <p class="eyebrow">Contact</p>
-      <h1>Get in touch.</h1>
-      <p class="lede">
-        The production contact route is preserved. A structured request-a-quote
-        workflow with project details and photo uploads is planned for a later
-        mission; no nonfunctional form is shipped in this foundation.
-      </p>
-      <div class="grid services section">
-        <article class="card">
-          <h2>Call</h2>
-          <p><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></p>
-        </article>
-        <article class="card">
-          <h2>Email</h2>
-          <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
-        </article>
-        <article class="card">
-          <h2>Service Center</h2>
-          <p>{SITE.address.street}</p>
-          <p>
-            {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
-          </p>
-        </article>
+  <section class="contact-hero section-dark">
+    <div class="container contact-hero-grid">
+      <div>
+        <p class="eyebrow eyebrow-light">Request a quote</p>
+        <h1>Show us what you’re working on.</h1>
+        <p class="lede lede-light">A few useful details make the first conversation much better. Send photos, identify the type of project, and tell us what you want to change.</p>
       </div>
+      <div class="contact-direct">
+        <a href={`tel:${SITE.phoneHref}`}><span>Call</span><strong>{SITE.phoneDisplay}</strong></a>
+        <a href={emailHref}><span>Email</span><strong>{SITE.email}</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="quote-start">
+    <div class="container quote-prep-grid">
+      <div>
+        <p class="eyebrow">Before you send it</p>
+        <h2>Include enough information to understand the project.</h2>
+      </div>
+      <div class="quote-checklist">
+        <div><span>01</span><p><strong>Project type</strong><br />Automotive, marine, furniture, commercial, or something custom.</p></div>
+        <div><span>02</span><p><strong>Clear photos</strong><br />Show the full piece or interior plus the areas you want repaired or changed.</p></div>
+        <div><span>03</span><p><strong>What you want</strong><br />Tell us whether the goal is restoration, replacement, a new look, or custom work.</p></div>
+        <div><span>04</span><p><strong>Best contact</strong><br />Include the phone number or email where you prefer to continue the conversation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-details-section">
+    <div class="container contact-cards">
+      <article><p class="eyebrow">Service center</p><h2>{SITE.address.street}<br />{SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}</h2><a class="text-link" href={mapsHref} rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a></article>
+      <article><p class="eyebrow">Call</p><h2><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></h2><p>For a direct conversation about the project.</p></article>
+      <article><p class="eyebrow">Email</p><h2><a href={emailHref}>{SITE.email}</a></h2><p>Useful when you want to include photos and written details.</p></article>
+    </div>
+  </section>
+
+  <section class="section quote-form-placeholder">
+    <div class="container placeholder-panel">
+      <div><p class="eyebrow">Coming in the next build</p><h2>Structured photo quote request.</h2></div>
+      <p>The V2 quote form will add project category, preferred contact method, description, and photo upload without changing the current production website. Until that integration is ready, call or email above.</p>
     </div>
   </section>
 </BaseLayout>
