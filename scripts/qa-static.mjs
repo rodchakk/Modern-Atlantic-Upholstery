@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, join, normalize } from 'node:path';
+import { join, normalize } from 'node:path';
 
 const pages = [
   ['', 'index.html'],
@@ -15,6 +15,15 @@ const pages = [
 
 const failures = [];
 const expectedBase = 'https://maupholsteryclt.com/';
+const forbiddenCustomerCopy = [
+  /foundation route/i,
+  /v2 foundation/i,
+  /view service foundation/i,
+  /coming in the next build/i,
+  /the v2 quote form/i,
+  /v2 media library/i,
+  /staging foundation/i,
+];
 
 for (const [route, file] of pages) {
   const fullPath = join('dist', file);
@@ -37,8 +46,10 @@ for (const [route, file] of pages) {
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
   if (h1Count !== 1) failures.push(`${file}: expected exactly one h1, found ${h1Count}`);
 
-  if (/foundation route|v2 foundation|view service foundation/i.test(html)) {
-    failures.push(`${file}: foundation placeholder copy is still present`);
+  for (const pattern of forbiddenCustomerCopy) {
+    if (pattern.test(html)) {
+      failures.push(`${file}: developer-facing placeholder copy is still present (${pattern})`);
+    }
   }
 
   const imageTags = html.match(/<img\b[^>]*>/g) ?? [];
