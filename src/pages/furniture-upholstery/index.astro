@@ -1,16 +1,37 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Furniture Upholstery"
-  description="Foundation route for furniture upholstery and reupholstery. Search Console already shows meaningful furniture-upholstery demand; final copy will be written from verified project evidence."
+  title="Furniture Upholstery & Reupholstery in Matthews, NC"
+  description="Furniture upholstery and reupholstery for chairs, sofas, dining furniture, and custom pieces from Modern Atlantic Upholstery near Charlotte, NC."
 >
-  <RouteFoundation
+  <PageIntro
     eyebrow="Furniture upholstery"
-    title="Furniture Upholstery"
-    description="Foundation route for furniture upholstery and reupholstery. Search Console already shows meaningful furniture-upholstery demand; final copy will be written from verified project evidence."
-    note="Content foundation only — no new production claims are introduced in MAU-WEB-002."
+    title="Keep the piece. Change what time has done to it."
+    lede="Some furniture is worth keeping because of its shape, its story, or simply because it fits the room better than anything new. Reupholstery gives those pieces a way forward."
+    image="/legacy-repo/longchair.jpg"
+    imageAlt="Completed upholstered chair project"
   />
+
+  <section class="section section-paper">
+    <div class="container detail-grid">
+      <div><p class="eyebrow">Furniture work</p><h2>Reupholstery for pieces you still want to live with.</h2></div>
+      <div class="detail-copy">
+        <p>Modern Atlantic works with furniture that needs a new surface, a new direction, or a second life. The project starts with the piece itself: its proportions, condition, and the role it has in the room.</p>
+        <div class="tag-list" aria-label="Furniture upholstery services"><span>Chairs</span><span>Sofas</span><span>Dining furniture</span><span>Benches</span><span>Ottomans</span><span>Custom furniture</span><span>Furniture reupholstery</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container gallery-pair">
+      <figure><img src="/legacy-repo/sofas.jpg" alt="Completed sofa upholstery project" loading="lazy" decoding="async" /></figure>
+      <figure><img src="/legacy-repo/table_chairs.jpg" alt="Completed dining chair upholstery project" loading="lazy" decoding="async" /></figure>
+    </div>
+  </section>
+
+  <QuoteCta eyebrow="Furniture project?" title="Send a photo of the piece and tell us what you want it to become." />
 </BaseLayout>

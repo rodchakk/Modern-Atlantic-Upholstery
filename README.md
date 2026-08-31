@@ -1,31 +1,25 @@
 # Modern Atlantic Upholstery V2
 
-Standalone V2 foundation for **Modern Atlantic Upholstery**, maintained by Minerva Technologies.
+Static-first website modernization for **Modern Atlantic Upholstery**, maintained by Minerva Technologies.
 
-## Mission status
+## Current mission
 
-This branch implements **MAU-WEB-002 — V2 Foundation & Content Preservation**.
+The active implementation branch is **MAU-WEB-003 — Information Architecture, Content & Visual System**.
 
-It intentionally does **not** replace production, modify DNS, touch Bluehost, migrate email, or connect the production domain.
+MAU-WEB-002 established and validated the standalone Astro/Cloudflare foundation. MAU-WEB-003 turns that foundation into the first complete V2 staging experience while production remains unchanged.
 
-## Technical direction
+## Stack
 
-- Astro 7 static-first site
-- Strict TypeScript
-- Minimal client-side JavaScript (currently zero hydrated framework components)
+- Astro 7 static output
+- TypeScript 6
 - `@astrojs/sitemap`
 - Cloudflare Workers Static Assets readiness via Wrangler
+- Plain CSS visual system
+- Zero hydrated framework components
 - No database
 - No CMS
 - No PHP
 - No WordPress runtime dependency
-
-Cloudflare's current guidance recommends Workers for new Astro projects. A fully prerendered Astro site does not require the Cloudflare adapter; the built `dist/` directory can be served as static assets.
-
-## Requirements
-
-- Node.js 22.20.0 (minimum Astro support is Node 22.12.0)
-- npm
 
 ## Commands
 
@@ -37,21 +31,7 @@ npm run build
 npm run verify:build
 ```
 
-Preview locally:
-
-```bash
-npm run preview
-```
-
-Future Cloudflare preview deployment, only after a Cloudflare account/project is approved:
-
-```bash
-npx wrangler deploy
-```
-
-Do **not** attach `maupholsteryclt.com` during foundation work.
-
-## Route foundation
+## Routes
 
 - `/`
 - `/services/`
@@ -63,27 +43,29 @@ Do **not** attach `maupholsteryclt.com` during foundation work.
 - `/about-us/`
 - `/contact/`
 
-The currently indexed production routes `/`, `/services/`, `/about-us/`, and `/contact/` are deliberately preserved.
+Existing indexed production routes are deliberately preserved.
 
-## Staging indexing safety
+## Production safety
 
-Unless `PUBLIC_SITE_ENV=production` is present at build time, every generated page carries:
+Unless `PUBLIC_SITE_ENV=production` is supplied at build time, generated pages contain `noindex, nofollow`.
 
-```html
-<meta name="robots" content="noindex, nofollow">
-```
-
-This makes a future `workers.dev` preview safer from accidental indexing.
+No staging work should attach the production domain or modify Wix, Bluehost, WordPress, Search Console, Google Business, DNS, or `info@maupholsteryclt.com`.
 
 ## Documentation
 
-- `docs/legacy-site-inventory.md` — public production content and asset inventory
-- `docs/seo-baseline.md` — Search Console / Google Business baseline
-- `docs/cloudflare-readiness.md` — current deployment direction
-- `docs/MAU-WEB-002-report.md` — implementation report and remaining validation
+- `docs/legacy-site-inventory.md`
+- `docs/seo-baseline.md`
+- `docs/cloudflare-readiness.md`
+- `docs/MAU-WEB-002-report.md`
+- `docs/MAU-WEB-003-design-direction.md`
 
-## Legacy repository assets
+## Remaining before launch
 
-The pre-V2 repository contained an unfinished static prototype and project images. The prototype code is removed from this branch, while its image blobs are preserved under `public/legacy-repo/` for later curation. Git history also retains the original source.
-
-These images are not assumed to be approved final V2 assets.
+- curate original-resolution project media,
+- confirm final Victor biography and competition wording,
+- confirm exact service-area language and opening hours,
+- implement the structured quote/photo-upload workflow,
+- complete accessibility / performance / metadata QA,
+- deploy staging to an approved Cloudflare preview host,
+- prepare email and DNS cutover plan,
+- launch only after production approval.

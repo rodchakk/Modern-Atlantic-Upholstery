@@ -1,36 +1,73 @@
 ---
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import { SITE } from '../config/site';
+import { SERVICES, SITE } from '../config/site';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
+  image?: string;
 }
 
-const { title, description, canonicalPath = Astro.url.pathname } = Astro.props;
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  image = '/legacy-repo/Untitled (Website).png',
+} = Astro.props;
 const pageTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 const canonical = new URL(canonicalPath, SITE.url).toString();
+const socialImage = new URL(image, SITE.url).toString();
 const isProduction = import.meta.env.PUBLIC_SITE_ENV === 'production';
 
-const localBusinessSchema = {
+const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: SITE.name,
-  url: SITE.url,
-  telephone: SITE.phoneHref,
-  email: SITE.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: SITE.address.street,
-    addressLocality: SITE.address.locality,
-    addressRegion: SITE.address.region,
-    postalCode: SITE.address.postalCode,
-    addressCountry: SITE.address.country,
-  },
-  sameAs: [SITE.social.facebook, SITE.social.instagram],
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.name,
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE.url}/#business`,
+      name: SITE.name,
+      url: SITE.url,
+      telephone: SITE.phoneHref,
+      email: SITE.email,
+      description:
+        'Upholstery shop in Matthews, North Carolina serving automotive, marine, furniture, and commercial upholstery projects in the Charlotte area.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: SITE.address.street,
+        addressLocality: SITE.address.locality,
+        addressRegion: SITE.address.region,
+        postalCode: SITE.address.postalCode,
+        addressCountry: SITE.address.country,
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Matthews' },
+        { '@type': 'City', name: 'Charlotte' },
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Upholstery Services',
+        itemListElement: SERVICES.map((service) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: service.name,
+            url: new URL(service.href, SITE.url).toString(),
+          },
+        })),
+      },
+      sameAs: [SITE.social.facebook, SITE.social.instagram],
+    },
+  ],
 };
 ---
 
@@ -38,25 +75,28 @@ const localBusinessSchema = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#10171b" />
+    <meta name="format-detection" content="telephone=yes" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta
       name="robots"
-      content={isProduction ? 'index, follow' : 'noindex, nofollow'}
+      content={isProduction ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'}
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(localBusinessSchema)}
-    />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>

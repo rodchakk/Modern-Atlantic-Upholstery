@@ -1,0 +1,31 @@
+---
+import { SITE } from '../config/site';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  copy?: string;
+}
+
+const {
+  eyebrow = 'Have a project in mind?',
+  title = 'Start with a few photos and a conversation.',
+  copy = 'Tell us what you are working on and how you would like to be contacted. We will use the details to understand the project before the next step.',
+} = Astro.props;
+---
+
+<section class="quote-cta section-dark">
+  <div class="container quote-cta-grid">
+    <div>
+      <p class="eyebrow eyebrow-light">{eyebrow}</p>
+      <h2>{title}</h2>
+    </div>
+    <div>
+      <p>{copy}</p>
+      <div class="actions">
+        <a class="button button-light" href="/contact/">Request a quote</a>
+        <a class="button button-ghost-light" href={`tel:${SITE.phoneHref}`}>Call {SITE.phoneDisplay}</a>
+      </div>
+    </div>
+  </div>
+</section>

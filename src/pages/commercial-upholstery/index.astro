@@ -1,16 +1,37 @@
 ---
-import RouteFoundation from '../../components/RouteFoundation.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Commercial Upholstery"
-  description="Foundation route for commercial upholstery. Final business-use cases and project evidence will be added only after they are verified."
+  title="Commercial Upholstery in Matthews & Charlotte, NC"
+  description="Commercial seating and business furniture upholstery for restaurants, offices, hospitality, and shared spaces from Modern Atlantic Upholstery near Charlotte, NC."
 >
-  <RouteFoundation
+  <PageIntro
     eyebrow="Commercial upholstery"
-    title="Commercial Upholstery"
-    description="Foundation route for commercial upholstery. Final business-use cases and project evidence will be added only after they are verified."
-    note="Content foundation only — no new production claims are introduced in MAU-WEB-002."
+    title="Seating that has to look right and keep doing its job."
+    lede="Commercial upholstery lives in high-visibility, high-use spaces. Modern Atlantic works with businesses on seating and furniture that need to be refreshed, reupholstered, or brought back into shape."
+    image="/legacy-repo/Commercial.jpg"
+    imageAlt="Completed commercial upholstery project"
   />
+
+  <section class="section section-paper">
+    <div class="container detail-grid">
+      <div><p class="eyebrow">Commercial work</p><h2>Built around the furniture, the space, and how people use it.</h2></div>
+      <div class="detail-copy">
+        <p>From customer-facing seating to business furniture, the right scope depends on the piece, the volume of use, and the environment it belongs in. Send photos and basic project details so we can understand what you are working with.</p>
+        <div class="tag-list" aria-label="Commercial upholstery services"><span>Business furniture</span><span>Booth seating</span><span>Shared-space seating</span><span>Dining seating</span><span>Furniture reupholstery</span><span>Custom upholstery</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section image-band">
+    <div class="container image-band-grid reverse">
+      <div><p class="eyebrow">For business projects</p><h2>Include quantities, photos, and where the furniture is used.</h2><p>Those details give us a better starting point than a generic contact message and help define the conversation around the real scope.</p><a class="text-link" href="/contact/">Start a commercial quote <span aria-hidden="true">↗</span></a></div>
+      <img src="/legacy-repo/table_chairs.jpg" alt="Upholstered seating project" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <QuoteCta eyebrow="Commercial project?" title="Show us the seating, the quantity, and the space it belongs in." />
 </BaseLayout>
