@@ -1,0 +1,24 @@
+---
+import { SITE } from '../config/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>{SITE.name}</strong>
+      <p>Upholstery shop in Matthews, North Carolina.</p>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <p><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></p>
+      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+    <div>
+      <strong>Service Center</strong>
+      <p>{SITE.address.street}</p>
+      <p>
+        {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
+      </p>
+    </div>
+  </div>
+</footer>

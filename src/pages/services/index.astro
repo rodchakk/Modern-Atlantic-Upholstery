@@ -1,0 +1,44 @@
+---
+import ServiceCard from '../../components/ServiceCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Upholstery Services"
+  description="Explore Modern Atlantic Upholstery service foundations for automotive, marine, furniture, and commercial upholstery."
+>
+  <section class="page-shell">
+    <div class="container">
+      <p class="eyebrow">Services</p>
+      <h1>Upholstery services.</h1>
+      <p class="lede">
+        The current production /services/ URL is preserved in V2 and becomes the
+        service hub instead of being used only as a portfolio page.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid services">
+      <ServiceCard
+        title="Automotive Upholstery"
+        description="Automotive service route."
+        href="/automotive-upholstery/"
+      />
+      <ServiceCard
+        title="Marine Upholstery"
+        description="Marine service route."
+        href="/marine-upholstery/"
+      />
+      <ServiceCard
+        title="Furniture Upholstery"
+        description="Furniture service route."
+        href="/furniture-upholstery/"
+      />
+      <ServiceCard
+        title="Commercial Upholstery"
+        description="Commercial service route."
+        href="/commercial-upholstery/"
+      />
+    </div>
+  </section>
+</BaseLayout>

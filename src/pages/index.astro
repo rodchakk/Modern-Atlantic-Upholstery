@@ -1,0 +1,54 @@
+---
+import ServiceCard from '../components/ServiceCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Modern Atlantic Upholstery"
+  description="Modern Atlantic Upholstery is an upholstery shop in Matthews, North Carolina, offering automotive, marine, furniture, and commercial upholstery work."
+>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">MAU V2 Foundation</p>
+      <h1>Craftsmanship built around the project.</h1>
+      <p class="lede">
+        Modern Atlantic Upholstery works across automotive, marine, furniture, and
+        commercial upholstery from its Matthews, North Carolina service center.
+        This V2 branch is a staging foundation and does not replace the current
+        production website.
+      </p>
+      <div class="actions">
+        <a class="button" href="/services/">Explore services</a>
+        <a class="button secondary" href="/contact/">Contact Modern Atlantic</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Service architecture</p>
+      <div class="grid services">
+        <ServiceCard
+          title="Automotive Upholstery"
+          description="Foundation route for automotive interiors, restoration, and related work."
+          href="/automotive-upholstery/"
+        />
+        <ServiceCard
+          title="Marine Upholstery"
+          description="Foundation route for boat and marine upholstery work."
+          href="/marine-upholstery/"
+        />
+        <ServiceCard
+          title="Furniture Upholstery"
+          description="Foundation route for furniture upholstery and reupholstery."
+          href="/furniture-upholstery/"
+        />
+        <ServiceCard
+          title="Commercial Upholstery"
+          description="Foundation route for upholstery work for businesses and shared spaces."
+          href="/commercial-upholstery/"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
