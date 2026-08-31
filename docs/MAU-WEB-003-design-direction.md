@@ -88,6 +88,8 @@ The visual proof strip uses the audited Google Business baseline captured during
 
 This value should be refreshed immediately before production cutover.
 
+The rating is intentionally **not** emitted as `aggregateRating` structured data. Google currently recommends LocalBusiness review/rating markup only for sites that capture reviews about other businesses and specifically warns against aggregating ratings from third-party sites for self-serving review snippets. The Google rating remains visible proof for users, not review-snippet markup.
+
 ## Asset policy
 
 The visual system currently uses the previously preserved local repository project images under `public/legacy-repo/` so V2 does not hotlink WordPress production.
@@ -102,7 +104,6 @@ The base layout now provides a stable entity graph with:
 - LocalBusiness
 - verified NAP
 - Matthews + Charlotte areaServed
-- Google aggregate-rating baseline
 - OfferCatalog for the four core service families
 
 `robots.txt` explicitly allows `OAI-SearchBot` while blocking `GPTBot`, preserving search visibility while keeping training crawler policy independent.
