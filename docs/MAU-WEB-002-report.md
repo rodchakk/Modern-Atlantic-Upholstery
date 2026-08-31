@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation prepared on branch `mau-web-002-v2-foundation`.
+Implementation complete on branch `mau-web-002-v2-foundation` and validated by GitHub Actions.
 
 Production is untouched.
 
@@ -88,9 +88,9 @@ No Cloudflare account, paid resource, production hostname, DNS, Wix, Bluehost, W
 
 ## Validation
 
-Local package installation cannot be executed from the ChatGPT container because outbound package/network resolution is unavailable.
+Local package installation cannot be executed from the ChatGPT container because outbound package/network resolution is unavailable, so the repository CI is the executable validation source.
 
-Repository CI executes:
+GitHub Actions validation executes:
 
 1. `npm install --no-audit --no-fund`
 2. `npm run check`
@@ -101,9 +101,11 @@ Repository CI executes:
 
 - Run 1 failed during dependency resolution because TypeScript `7.0.2` was outside the peer range supported by `@astrojs/check@0.9.10` (`^5.0.0 || ^6.0.0`).
 - The dependency was corrected to TypeScript `6.0.2` without disabling npm peer-dependency checks.
-- Final CI result is recorded in the pull request checks after the corrected commit.
+- Corrected CI run `33348920797` passed all validation steps: dependency install, Astro check, production build, and required build-artifact verification.
 
-The pull request workflow result is the authoritative executable validation for this mission.
+## Reproducibility note
+
+A committed `package-lock.json` is not included in MAU-WEB-002 because the local execution environment could not run npm and the CI runner is intentionally read-only. Direct dependencies are exact-version pinned. A lockfile should be generated and committed from a normal npm-capable environment before production deployment or as part of the next implementation mission.
 
 ## Known follow-ups / blockers
 
@@ -115,6 +117,8 @@ Before final content launch:
 - verify opening hours,
 - define quote workflow fields,
 - export the original Victor photo and original-resolution WordPress media before Bluehost decommission.
+
+Repository visibility is currently public because the pre-existing client repository is public. No secrets are stored in the V2 foundation. If Minerva wants the source private, repository visibility should be changed separately; this is not required for the static production architecture.
 
 ## Production guardrails honored
 
