@@ -1,6 +1,4 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import QuoteCta from '../../components/QuoteCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const projects = [
@@ -16,27 +14,40 @@ const projects = [
 
 <BaseLayout
   title="Upholstery Portfolio"
-  description="View automotive, marine, furniture, and commercial upholstery work from Modern Atlantic Upholstery in Matthews, North Carolina."
+  description="View real automotive, marine, furniture, and commercial upholstery work from Modern Atlantic Upholstery in Matthews, North Carolina."
   image="/legacy-repo/bout2.jpg"
 >
-  <PageIntro
-    eyebrow="Portfolio"
-    title="The work is the proof."
-    lede="A selection of upholstery projects across marine, vehicle, furniture, and commercial work—from restored seating to custom interiors and built-in pieces."
-    image="/legacy-repo/bout2.jpg"
-    imageAlt="Completed Modern Atlantic marine upholstery project"
-  />
+  <section class="premium-portfolio-hero">
+    <div class="container premium-portfolio-heading">
+      <div>
+        <p class="premium-kicker premium-kicker-dark">Real work</p>
+        <h1>The work is the proof.</h1>
+      </div>
+      <p>
+        Every image below is real Modern Atlantic work — marine, vehicle, furniture,
+        and commercial upholstery completed by the shop.
+      </p>
+    </div>
+  </section>
 
-  <section class="section section-paper">
-    <div class="container masonry-grid">
+  <section class="premium-portfolio">
+    <div class="container premium-portfolio-grid">
       {projects.map((project, index) => (
-        <figure class:list={['portfolio-item', index % 3 === 0 && 'portfolio-item-wide']}>
-          <img src={project.src} alt={project.alt} loading="lazy" decoding="async" />
-          <figcaption>{project.label}</figcaption>
+        <figure class:list={['premium-portfolio-item', index === 0 && 'premium-portfolio-featured', index === 4 && 'premium-portfolio-tall']}>
+          <img src={project.src} alt={project.alt} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+          <figcaption><span>{project.label}</span><span aria-hidden="true">↗</span></figcaption>
         </figure>
       ))}
     </div>
   </section>
 
-  <QuoteCta />
+  <section class="premium-quote premium-quote-compact">
+    <div class="container premium-quote-grid">
+      <div><p class="premium-kicker">Your project next</p><h2>Show us what you want to transform.</h2></div>
+      <div class="premium-quote-actions">
+        <p>Photos are the easiest place to start. Send the piece, the condition, and the result you have in mind.</p>
+        <a class="premium-button premium-button-gold" href="/contact/">Request a quote <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
