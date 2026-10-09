@@ -95,14 +95,14 @@ const faqSchema = faqs.length > 0 ? {
 } : null;
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}>
+<BaseLayout title={title} description={description} image={heroImage} preloadImage={heroImage}>
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
   <section class="premium-service-hero">
     <div class="premium-service-hero-media">
-      <img src={heroImage} alt={heroAlt} decoding="async" />
+      <img src={heroImage} alt={heroAlt} decoding="async" fetchpriority="high" />
     </div>
     <div class="premium-service-hero-shade"></div>
 
