@@ -29,13 +29,13 @@ export const SERVICES = [
     name: 'Automotive Upholstery',
     href: '/automotive-upholstery/',
     short: 'Seats, headliners, interior panels, restoration, and custom automotive interior work.',
-    image: '/legacy-repo/moto.jpg',
+    image: '/real-work/automotive-classic-door.webp',
   },
   {
     name: 'Marine Upholstery',
     href: '/marine-upholstery/',
     short: 'Boat seating, cushions, and custom marine upholstery built around the way the space is used.',
-    image: '/legacy-repo/bout.jpg',
+    image: '/real-work/marine-camel-01.webp',
   },
   {
     name: 'Furniture Upholstery',
