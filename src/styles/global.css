@@ -2443,3 +2443,127 @@ body:has(.premium-hero) .header-inner {
     transition-duration: .01ms !important;
   }
 }
+
+
+.premium-local,
+.premium-home-faq {
+  padding-block: clamp(5rem, 8vw, 8rem);
+  background: #f8f5ef;
+}
+.premium-local {
+  border-top: 1px solid #ddd4c8;
+}
+.premium-local-grid,
+.premium-home-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+.premium-local h2,
+.premium-home-faq h2 {
+  max-width: 10ch;
+  margin: 0;
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 500;
+  line-height: .94;
+  letter-spacing: -.045em;
+}
+.premium-local-grid > div:first-child > p:not(.premium-kicker) {
+  max-width: 34rem;
+  margin-top: 1.3rem;
+  color: #6a635d;
+}
+.premium-local-cards {
+  display: grid;
+  border-top: 1px solid #d6cbbc;
+}
+.premium-local-cards > a,
+.premium-local-cards > div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .25rem 1rem;
+  min-height: 8rem;
+  align-content: center;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #d6cbbc;
+  text-decoration: none;
+}
+.premium-local-cards small {
+  grid-column: 1;
+  color: var(--mau-gold-deep);
+  font-size: .57rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.premium-local-cards strong {
+  grid-column: 1;
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-weight: 550;
+  line-height: 1.18;
+}
+.premium-local-cards > a > span[aria-hidden] {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cfc4b6;
+  border-radius: 50%;
+}
+.premium-local-cards > div > span {
+  grid-column: 1;
+  margin-top: .2rem;
+  color: #756d65;
+  font-size: .78rem;
+}
+.premium-home-faq {
+  background: var(--mau-ivory);
+  border-top: 1px solid #ddd4c8;
+}
+
+/* Below-the-fold containment improves mobile rendering without affecting SEO. */
+.premium-services,
+.premium-craft,
+.premium-work,
+.premium-local,
+.premium-home-faq,
+.premium-service-intro,
+.premium-real-proof,
+.premium-real-gallery,
+.premium-service-process,
+.premium-service-faq,
+.premium-related-services,
+.premium-quote-planner,
+.premium-contact-details {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+@media (max-width: 44rem) {
+  .premium-local,
+  .premium-home-faq { padding-block: 4.25rem; }
+
+  .premium-local-grid,
+  .premium-home-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .premium-local h2,
+  .premium-home-faq h2 {
+    font-size: 3.1rem;
+  }
+
+  .premium-local-cards > a,
+  .premium-local-cards > div {
+    min-height: 6.4rem;
+    padding: 1.1rem 0;
+  }
+}
