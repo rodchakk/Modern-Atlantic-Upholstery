@@ -9,6 +9,7 @@ interface Props {
   description: string;
   canonicalPath?: string;
   image?: string;
+  preloadImage?: string;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description,
   canonicalPath = Astro.url.pathname,
   image = '/legacy-repo/Untitled (Website).png',
+  preloadImage,
 } = Astro.props;
 const pageTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 const canonical = new URL(canonicalPath, SITE.url).toString();
@@ -65,6 +67,11 @@ const structuredData = {
           },
         })),
       },
+      founder: {
+        '@type': 'Person',
+        name: 'Victor Terzi',
+        jobTitle: 'Owner and Upholsterer',
+      },
       sameAs: [SITE.social.facebook, SITE.social.instagram],
     },
   ],
@@ -79,6 +86,7 @@ const structuredData = {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#10171b" />
     <meta name="format-detection" content="telephone=yes" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

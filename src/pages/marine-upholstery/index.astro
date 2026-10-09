@@ -1,37 +1,37 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import QuoteCta from '../../components/QuoteCta.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PremiumServicePage from '../../components/PremiumServicePage.astro';
 ---
 
-<BaseLayout
+<PremiumServicePage
   title="Boat & Marine Upholstery in Matthews & Charlotte, NC"
+  currentHref="/marine-upholstery/"
   description="Boat seating, cushions, and custom marine upholstery from Modern Atlantic Upholstery in Matthews, serving the Charlotte area."
->
-  <PageIntro
-    eyebrow="Marine upholstery"
-    title="Boat upholstery that belongs in the space."
-    lede="Seating and cushions take a lot of the visual weight in a boat interior. Modern Atlantic approaches marine upholstery as part of the full space, balancing the shape, finish, and way the seating is used."
-    image="/legacy-repo/bout2.jpg"
-    imageAlt="Completed boat upholstery project"
-  />
-
-  <section class="section section-paper">
-    <div class="container detail-grid">
-      <div><p class="eyebrow">Marine work</p><h2>Refresh the seating without losing the character of the boat.</h2></div>
-      <div class="detail-copy">
-        <p>Whether the goal is to replace worn upholstery or update the look of the interior, the project starts with the existing shapes, the condition of the seating, and how you want the finished space to feel.</p>
-        <div class="tag-list" aria-label="Marine upholstery services"><span>Boat seating</span><span>Cushions</span><span>Custom marine upholstery</span><span>Interior seating areas</span><span>Upholstery replacement</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section image-band">
-    <div class="container image-band-grid">
-      <img src="/legacy-repo/bout.jpg" alt="Marine upholstery work" loading="lazy" decoding="async" />
-      <div><p class="eyebrow">Start with the current condition</p><h2>Photos help us see the layout, wear, and scope before the conversation goes further.</h2><a class="text-link" href="/contact/">Start a marine quote <span aria-hidden="true">↗</span></a></div>
-    </div>
-  </section>
-
-  <QuoteCta eyebrow="Marine project?" title="Show us the seating and tell us what you want to change." />
-</BaseLayout>
+  eyebrow="Marine upholstery"
+  heroTitle="Built for the water. Finished for the whole space."
+  heroLede="Boat seating and cushions carry a lot of the visual weight in a marine interior. Shape, comfort, durability, and finish all have to work together."
+  heroImage="/brand/generated/marine-sunset.webp"
+  heroAlt="Editorial marine upholstery visual representing custom boat interior craftsmanship"
+  introTitle="Refresh the seating without losing the character of the boat."
+  introBody="Marine upholstery starts with the existing layout, the condition of the cushions, and the way the boat is actually used. The materials and finish should respect the space while standing up to the environment."
+  tags={['Boat seating','Cushions','Custom marine upholstery','Interior seating areas','Upholstery replacement']}
+  realImage="/legacy-repo/bout.jpg"
+  realImageAlt="Real marine upholstery work completed by Modern Atlantic Upholstery"
+  realLabel="Real marine work"
+  realTitle="A cleaner interior starts with the seating."
+  realBody="Because seating occupies so much visual space inside a boat, a thoughtful upholstery refresh can change the entire feel of the interior without changing the boat itself."
+  steps={[
+    { title: 'See the layout.', body: 'Photos help us understand the seating arrangement, shapes, wear, and how the upholstery connects to the rest of the interior.' },
+    { title: 'Balance use and appearance.', body: 'Marine materials have to perform, but the texture, color, and detailing still need to feel right in the space.' },
+    { title: 'Finish as one interior.', body: 'The goal is seating that feels integrated with the boat rather than simply newly covered.' },
+  ]}
+  galleryImages={[
+    { src: '/legacy-repo/bout.jpg', alt: 'Boat upholstery completed by Modern Atlantic Upholstery', label: 'Marine upholstery' },
+    { src: '/legacy-repo/bout2.jpg', alt: 'Boat upholstery completed by Modern Atlantic Upholstery', label: 'Boat seating' },
+  ]}
+  faqs={[
+    { question: "What marine upholstery work do you take on?", answer: "Projects can include boat seating, cushions, interior seating areas, and custom marine upholstery. Photos help determine the shapes, condition, and scope." },
+    { question: "Can you match the existing style of a boat?", answer: "That is often the goal. The approach can preserve the character of the boat while refreshing worn upholstery, depending on the existing design and materials." },
+    { question: "Do you serve boat owners in the Charlotte area?", answer: "Yes. Modern Atlantic works from Matthews and serves clients across the Charlotte area." },
+    { question: "What should I photograph for a marine quote?", answer: "Send wide photos of the seating layout plus closer images of worn areas, seams, corners, and any shapes that may need rebuilding or reupholstery." },
+  ]}
+/>

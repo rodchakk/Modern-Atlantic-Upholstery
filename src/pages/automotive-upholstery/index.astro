@@ -1,43 +1,37 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import QuoteCta from '../../components/QuoteCta.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PremiumServicePage from '../../components/PremiumServicePage.astro';
 ---
 
-<BaseLayout
+<PremiumServicePage
   title="Automotive Upholstery in Matthews & Charlotte, NC"
+  currentHref="/automotive-upholstery/"
   description="Automotive upholstery, interior restoration, seats, headliners, panels, and custom interior work from Modern Atlantic Upholstery in Matthews, NC."
->
-  <PageIntro
-    eyebrow="Automotive upholstery"
-    title="Make the interior feel worth getting back into."
-    lede="Modern Atlantic works on automotive interiors that need restoration, repair, or a more personal finish — from seating and headliners to panels and custom interior details."
-    image="/legacy-repo/moto.jpg"
-    imageAlt="Completed motorcycle upholstery project"
-  />
-
-  <section class="section section-paper">
-    <div class="container detail-grid">
-      <div>
-        <p class="eyebrow">Automotive work</p>
-        <h2>Interior work with the whole cabin in mind.</h2>
-      </div>
-      <div class="detail-copy">
-        <p>Automotive upholstery is more than replacing a surface. Color, texture, fit, wear, and the surrounding interior all affect whether the finished work feels intentional.</p>
-        <div class="tag-list" aria-label="Automotive upholstery services">
-          <span>Seats</span><span>Headliners</span><span>Interior panels</span><span>Interior restoration</span><span>Classic cars</span><span>Custom interiors</span><span>Motorcycles</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container feature-grid">
-      <article><span class="feature-number">01</span><h3>Restore</h3><p>Bring worn, damaged, or aging interior surfaces back into a cleaner, more complete condition.</p></article>
-      <article><span class="feature-number">02</span><h3>Refresh</h3><p>Update the feel of an interior while respecting the vehicle and the parts that still work well.</p></article>
-      <article><span class="feature-number">03</span><h3>Customize</h3><p>Shape the material, color, and detailing around the character you want the interior to have.</p></article>
-    </div>
-  </section>
-
-  <QuoteCta eyebrow="Automotive project?" title="Send the vehicle, the area you want to change, and a few photos." />
-</BaseLayout>
+  eyebrow="Automotive upholstery"
+  heroTitle="The interior should feel as considered as the car."
+  heroLede="Seats, headliners, panels, restoration, and custom interior work shaped around the vehicle instead of treated like a generic replacement."
+  heroImage="/brand/generated/automotive-copper-stitch.webp"
+  heroAlt="Editorial automotive upholstery visual representing custom interior craftsmanship"
+  introTitle="Interior work with the whole cabin in mind."
+  introBody="Color, texture, proportion, fit, and the surrounding interior all affect whether new upholstery feels intentional. The goal is not simply new material — it is an interior that makes sense as a whole."
+  tags={['Seats','Headliners','Interior panels','Interior restoration','Classic cars','Custom interiors','Motorcycles']}
+  realImage="/legacy-repo/moto.jpg"
+  realImageAlt="Real motorcycle upholstery project completed by Modern Atlantic Upholstery"
+  realLabel="Real automotive work"
+  realTitle="Details that change how the whole interior feels."
+  realBody="Automotive work is where Victor’s upholstery path began. Fit, seam placement, material tension, and finish are difficult to hide inside a vehicle, which makes precision part of the visual language."
+  steps={[
+    { title: 'Understand the vehicle.', body: 'The existing interior, age, use, and character of the vehicle determine what should stay and what should change.' },
+    { title: 'Define the finish.', body: 'Material, color, texture, stitching, and surrounding surfaces need to work together rather than compete.' },
+    { title: 'Build for the cabin.', body: 'The finished upholstery should look intentional from the driver’s seat and hold up to how the vehicle is actually used.' },
+  ]}
+  galleryImages={[
+    { src: '/legacy-repo/moto.jpg', alt: 'Motorcycle upholstery completed by Modern Atlantic Upholstery', label: 'Motorcycle upholstery' },
+    { src: '/legacy-repo/moto.jpg', alt: 'Motorcycle upholstery completed by Modern Atlantic Upholstery', label: 'Motorcycle upholstery' },
+  ]}
+  faqs={[
+    { question: "Can you reupholster classic car interiors?", answer: "Yes. Modern Atlantic handles classic-car and custom interior upholstery projects. Photos of the seats, panels, headliner, and current interior help us understand the scope before discussing materials and direction." },
+    { question: "Do you repair only seats?", answer: "No. Automotive work can include seats, headliners, interior panels, door panels, motorcycle seating, and broader interior restoration depending on the project." },
+    { question: "Do you serve Charlotte as well as Matthews?", answer: "Yes. Modern Atlantic is based in Matthews and serves upholstery clients from Charlotte and the surrounding area." },
+    { question: "What should I send for an automotive quote?", answer: "Send clear photos of the full interior and the areas you want changed, plus the vehicle year/model and a short description of the result you want." },
+  ]}
+/>

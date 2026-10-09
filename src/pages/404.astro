@@ -7,17 +7,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="The requested page could not be found."
   canonicalPath="/404/"
 >
-  <section class="page-shell">
-    <div class="container">
-      <p class="eyebrow">404</p>
-      <h1>Page not found.</h1>
-      <p class="lede">
-        The requested page does not exist. Return to the Modern Atlantic
-        Upholstery homepage.
-      </p>
-      <div class="actions">
-        <a class="button" href="/">Go home</a>
+  <section class="premium-404">
+    <div class="container premium-404-grid">
+      <div>
+        <p class="premium-kicker">404</p>
+        <h1>This page slipped a stitch.</h1>
+        <p>
+          The page you requested does not exist. The upholstery work is still exactly where it should be.
+        </p>
+        <div class="premium-actions">
+          <a class="premium-button premium-button-gold" href="/">Return home <span aria-hidden="true">→</span></a>
+          <a class="premium-button premium-button-glass" href="/portfolio/">View real work</a>
+        </div>
       </div>
+      <figure>
+        <img src="/legacy-repo/moto.jpg" alt="Modern Atlantic upholstery detail" loading="eager" decoding="async" />
+      </figure>
     </div>
   </section>
 </BaseLayout>

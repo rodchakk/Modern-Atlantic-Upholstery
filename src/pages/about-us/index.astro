@@ -1,39 +1,87 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import QuoteCta from '../../components/QuoteCta.astro';
+import { SITE } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Victor Terzi',
+  jobTitle: 'Owner and Upholsterer',
+  worksFor: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+  },
+  knowsAbout: ['Automotive upholstery', 'Marine upholstery', 'Furniture upholstery', 'Commercial upholstery'],
+};
 ---
 
 <BaseLayout
   title="About Victor Terzi & Modern Atlantic Upholstery"
   description="Meet Victor Terzi and learn about the automotive roots, restoration mindset, and hands-on upholstery craft behind Modern Atlantic Upholstery in Matthews, NC."
 >
-  <PageIntro
-    eyebrow="About Modern Atlantic"
-    title="A shop built around the satisfaction of making something useful feel right again."
-    lede="Modern Atlantic Upholstery is led by Victor Terzi, whose path in upholstery began with automotive interiors and expanded into furniture, marine, commercial, and custom work."
-    image="/legacy-repo/MAU-02.png"
-    imageAlt="Modern Atlantic Upholstery brand artwork"
-  />
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
-  <section class="section section-paper">
-    <div class="container story-grid story-grid-large">
-      <div><p class="eyebrow">Victor Terzi</p><h2>Automotive roots. A restoration mindset.</h2></div>
-      <div class="story-copy">
-        <p>Victor began in automotive upholstery, learning the craft through interiors where fit, finish, and small details are hard to hide. Over time, that work expanded into furniture and other upholstery projects.</p>
-        <p>What connects those categories is the transformation: taking an interior or piece that is worn, dated, damaged, or simply no longer right for its owner and giving it another useful chapter.</p>
-        <p>Today, Modern Atlantic works from Matthews, North Carolina and serves customers across the Charlotte area. The shop handles automotive, marine, furniture, and commercial upholstery with the project itself — not a one-size-fits-all package — as the starting point.</p>
+  <section class="premium-about-hero">
+    <div class="container premium-about-hero-grid">
+      <div class="premium-about-copy">
+        <p class="premium-kicker">Meet the owner</p>
+        <h1>Victor Terzi.</h1>
+        <p class="premium-page-lede">
+          Nearly two decades in upholstery, beginning with automotive interiors and growing
+          into furniture, marine, commercial, and custom work.
+        </p>
+        <div class="premium-about-meta">
+          <div><strong>Nearly 20</strong><span>years in upholstery</span></div>
+          <div><strong>Matthews</strong><span>North Carolina</span></div>
+        </div>
+      </div>
+      <figure class="premium-about-image">
+        <img src="/real-work/furniture-tufted-chair-ottoman.webp" alt="Tufted chair and ottoman upholstery project completed by Modern Atlantic Upholstery" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="premium-about-story">
+    <div class="container premium-about-story-grid">
+      <div>
+        <p class="premium-kicker premium-kicker-dark">The story</p>
+        <h2>Automotive roots.<br />A restoration mindset.</h2>
+      </div>
+      <div class="premium-about-prose">
+        <p>
+          Victor started in automotive upholstery, where the smallest alignment, seam, and
+          finish can change how an entire interior feels. That early discipline became the
+          foundation for Modern Atlantic.
+        </p>
+        <p>
+          The work later expanded into furniture and other custom upholstery projects. What
+          connects every category is the transformation: taking something worn, dated, damaged,
+          or simply no longer right for its owner and giving it a useful next chapter.
+        </p>
+        <p>
+          Today, Modern Atlantic works from Matthews and serves the Charlotte area with a direct,
+          project-first approach. The piece comes first. Then the materials, technique, and finish
+          follow from what the project actually needs.
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container values-grid">
-      <article><span class="feature-number">01</span><h3>Look closely</h3><p>The condition, shape, surrounding interior, and intended use all matter before choosing a direction.</p></article>
-      <article><span class="feature-number">02</span><h3>Respect the piece</h3><p>Good restoration keeps what is worth keeping and changes what needs to change.</p></article>
-      <article><span class="feature-number">03</span><h3>Finish with intention</h3><p>The goal is not simply new material. It is a finished result that feels coherent in the space.</p></article>
+  <section class="premium-values">
+    <div class="container premium-values-grid">
+      <article><span>01</span><h3>Look closely.</h3><p>Condition, proportion, surrounding interior, and intended use all matter before choosing a direction.</p></article>
+      <article><span>02</span><h3>Respect the piece.</h3><p>Good restoration keeps what deserves to stay and changes only what needs to change.</p></article>
+      <article><span>03</span><h3>Finish with intention.</h3><p>The goal is not simply new material. It is a finished result that belongs in the space.</p></article>
     </div>
   </section>
 
-  <QuoteCta />
+  <section class="premium-quote premium-quote-compact">
+    <div class="container premium-quote-grid">
+      <div><p class="premium-kicker">Modern Atlantic Upholstery</p><h2>Have a project in mind?</h2></div>
+      <div class="premium-quote-actions">
+        <p>Start with a few photos or call the shop directly at {SITE.phoneDisplay}.</p>
+        <a class="premium-button premium-button-gold" href="/contact/">Start your project <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

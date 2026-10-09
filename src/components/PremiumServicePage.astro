@@ -1,0 +1,246 @@
+---
+import { SERVICES, SITE } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  currentHref: string;
+  eyebrow: string;
+  heroTitle: string;
+  heroLede: string;
+  heroImage: string;
+  heroAlt: string;
+  introTitle: string;
+  introBody: string;
+  tags: readonly string[];
+  realImage: string;
+  realImageAlt: string;
+  realLabel: string;
+  realTitle: string;
+  realBody: string;
+  steps: readonly { title: string; body: string }[];
+  galleryImages?: readonly { src: string; alt: string; label?: string }[];
+  faqs?: readonly { question: string; answer: string }[];
+}
+
+const {
+  title,
+  description,
+  currentHref,
+  eyebrow,
+  heroTitle,
+  heroLede,
+  heroImage,
+  heroAlt,
+  introTitle,
+  introBody,
+  tags,
+  realImage,
+  realImageAlt,
+  realLabel,
+  realTitle,
+  realBody,
+  steps,
+  galleryImages = [],
+  faqs = [],
+} = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title.replace(/ in Matthews.*$/, ''),
+  description,
+  url: `${SITE.url}${currentHref}`,
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+    telephone: SITE.phoneHref,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.locality,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.postalCode,
+      addressCountry: SITE.address.country,
+    },
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Matthews' },
+    { '@type': 'City', name: 'Charlotte' },
+  ],
+};
+
+const relatedServices = SERVICES.filter((service) => service.href !== currentHref);
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services/` },
+    { '@type': 'ListItem', position: 3, name: eyebrow, item: `${SITE.url}${currentHref}` },
+  ],
+};
+
+const faqSchema = faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+} : null;
+---
+
+<BaseLayout title={title} description={description} image={heroImage} preloadImage={heroImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+  <section class="premium-service-hero">
+    <div class="premium-service-hero-media">
+      <img src={heroImage} alt={heroAlt} decoding="async" fetchpriority="high" />
+    </div>
+    <div class="premium-service-hero-shade"></div>
+
+    <div class="container premium-service-hero-inner">
+      <div class="premium-service-hero-copy">
+        <p class="premium-kicker">{eyebrow}</p>
+        <h1>{heroTitle}</h1>
+        <p>{heroLede}</p>
+        <div class="premium-actions">
+          <a class="premium-button premium-button-gold" href="/contact/">Request a quote <span aria-hidden="true">→</span></a>
+          <a class="premium-button premium-button-glass" href="/portfolio/">See real work</a>
+        </div>
+      </div>
+
+      <div class="premium-service-proof">
+        <div><strong>Nearly 20 years</strong><span>of upholstery experience</span></div>
+        <div><strong>{SITE.google.rating} ★</strong><span>{SITE.google.reviewCount} Google reviews</span></div>
+        <div><strong>Matthews, NC</strong><span>serving Charlotte</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-service-intro">
+    <div class="container premium-service-intro-grid">
+      <div>
+        <p class="premium-kicker premium-kicker-dark">The work</p>
+        <h2>{introTitle}</h2>
+      </div>
+      <div class="premium-service-intro-copy">
+        <p>{introBody}</p>
+        <div class="premium-tag-list" aria-label={`${eyebrow} services`}>
+          {tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-real-proof">
+    <div class="container premium-real-proof-grid">
+      <figure>
+        <img src={realImage} alt={realImageAlt} loading="lazy" decoding="async" />
+        <figcaption>Real Modern Atlantic work</figcaption>
+      </figure>
+      <div>
+        <p class="premium-kicker">{realLabel}</p>
+        <h2>{realTitle}</h2>
+        <p>{realBody}</p>
+        <a class="premium-text-link" href="/portfolio/">View the portfolio <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+{galleryImages.length > 0 && (
+  <section class="premium-real-gallery">
+    <div class="container">
+      <div class="premium-real-gallery-heading">
+        <div>
+          <p class="premium-kicker premium-kicker-dark">More real work</p>
+          <h2>Made by Modern Atlantic.</h2>
+        </div>
+        <p>Additional project details from Victor’s actual upholstery work.</p>
+      </div>
+      <div class="premium-real-gallery-grid">
+        {galleryImages.map((image) => (
+          <figure>
+            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+            {image.label && <figcaption>{image.label}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+  <section class="premium-service-process">
+    <div class="container">
+      <div class="premium-service-process-heading">
+        <div>
+          <p class="premium-kicker premium-kicker-dark">How we approach it</p>
+          <h2>The finish starts with the right questions.</h2>
+        </div>
+        <p>Every project is different. These are the three things we want to understand before deciding what the work should become.</p>
+      </div>
+
+      <ol class="premium-service-process-list">
+        {steps.map((step, index) => (
+          <li>
+            <span>0{index + 1}</span>
+            <div><h3>{step.title}</h3><p>{step.body}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {faqs.length > 0 && (
+    <section class="premium-service-faq">
+      <div class="container premium-service-faq-grid">
+        <div>
+          <p class="premium-kicker premium-kicker-dark">Questions we hear often</p>
+          <h2>Useful answers before you send the photos.</h2>
+        </div>
+        <div class="premium-faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="premium-related-services">
+    <div class="container">
+      <p class="premium-kicker">Explore more</p>
+      <div class="premium-related-grid">
+        {relatedServices.map((service) => (
+          <a href={service.href}>
+            <span>{service.name}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-quote premium-quote-compact">
+    <div class="container premium-quote-grid">
+      <div>
+        <p class="premium-kicker">Start with a photo</p>
+        <h2>Show us what you want to transform.</h2>
+      </div>
+      <div class="premium-quote-actions">
+        <p>Photos give us the fastest read on scale, condition, materials, and the details that matter.</p>
+        <a class="premium-button premium-button-gold" href="/contact/">Request a quote <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
