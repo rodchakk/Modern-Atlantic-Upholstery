@@ -29,13 +29,13 @@ export const SERVICES = [
     name: 'Automotive Upholstery',
     href: '/automotive-upholstery/',
     short: 'Seats, headliners, interior panels, restoration, and custom automotive interior work.',
-    image: '/legacy-repo/moto.jpg',
+    image: '/brand/generated/automotive-copper-stitch.webp',
   },
   {
     name: 'Marine Upholstery',
     href: '/marine-upholstery/',
     short: 'Boat seating, cushions, and custom marine upholstery built around the way the space is used.',
-    image: '/legacy-repo/bout.jpg',
+    image: '/brand/generated/marine-sunset.webp',
   },
   {
     name: 'Furniture Upholstery',
@@ -47,7 +47,7 @@ export const SERVICES = [
     name: 'Commercial Upholstery',
     href: '/commercial-upholstery/',
     short: 'Seating and furniture upholstery for businesses, hospitality spaces, and shared environments.',
-    image: '/legacy-repo/Commercial.jpg',
+    image: '/brand/generated/commercial-banquette.webp',
   },
 ] as const;
 
