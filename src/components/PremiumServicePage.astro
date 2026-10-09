@@ -19,6 +19,7 @@ interface Props {
   realTitle: string;
   realBody: string;
   steps: readonly { title: string; body: string }[];
+  galleryImages?: readonly { src: string; alt: string; label?: string }[];
 }
 
 const {
@@ -38,6 +39,7 @@ const {
   realTitle,
   realBody,
   steps,
+  galleryImages = [],
 } = Astro.props;
 
 const serviceSchema = {
@@ -125,6 +127,28 @@ const relatedServices = SERVICES.filter((service) => service.name !== title.repl
       </div>
     </div>
   </section>
+
+{galleryImages.length > 0 && (
+  <section class="premium-real-gallery">
+    <div class="container">
+      <div class="premium-real-gallery-heading">
+        <div>
+          <p class="premium-kicker premium-kicker-dark">More real work</p>
+          <h2>Made by Modern Atlantic.</h2>
+        </div>
+        <p>Additional project details from Victor’s actual upholstery work.</p>
+      </div>
+      <div class="premium-real-gallery-grid">
+        {galleryImages.map((image) => (
+          <figure>
+            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+            {image.label && <figcaption>{image.label}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
   <section class="premium-service-process">
     <div class="container">
