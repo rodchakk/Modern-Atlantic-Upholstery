@@ -5,6 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 interface Props {
   title: string;
   description: string;
+  currentHref: string;
   eyebrow: string;
   heroTitle: string;
   heroLede: string;
@@ -25,6 +26,7 @@ interface Props {
 const {
   title,
   description,
+  currentHref,
   eyebrow,
   heroTitle,
   heroLede,
@@ -47,6 +49,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: title.replace(/ in Matthews.*$/, ''),
   description,
+  url: `${SITE.url}${currentHref}`,
   provider: {
     '@type': 'LocalBusiness',
     '@id': `${SITE.url}/#business`,
@@ -67,7 +70,7 @@ const serviceSchema = {
   ],
 };
 
-const relatedServices = SERVICES.filter((service) => service.name !== title.replace(/ in Matthews.*$/, ''));
+const relatedServices = SERVICES.filter((service) => service.href !== currentHref);
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
