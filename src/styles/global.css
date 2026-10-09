@@ -279,26 +279,21 @@ body:has(.premium-hero) .header-inner {
 }
 
 .brand-premium {
-  gap: .18rem;
+  position: relative;
+  display: inline-flex;
+  width: clamp(8.9rem, 14vw, 12rem);
+  align-items: center;
 }
 
-.brand-mark {
+.brand-logo {
   display: block;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.85rem;
-  font-weight: 950;
-  line-height: .88;
-  letter-spacing: -.09em;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.brand-premium .brand-sub {
-  display: block;
-  margin-top: .38rem;
-  color: rgba(255, 255, 255, .78);
-  font-size: .48rem;
-  letter-spacing: .04em;
-  text-transform: none;
+.brand-logo-dark {
+  display: none;
 }
 
 .mobile-menu summary {
@@ -793,16 +788,8 @@ body:has(.premium-hero) .header-inner {
     min-height: 5.7rem;
   }
 
-  body:has(.premium-hero) .brand-mark {
-    font-size: 1.62rem;
-  }
-
-  body:has(.premium-hero) .brand-premium .brand-sub {
-    display: block;
-    max-width: 8rem;
-    color: rgba(255,255,255,.7);
-    font-size: .42rem;
-    line-height: 1.15;
+  body:has(.premium-hero) .brand-premium {
+    width: 8.8rem;
   }
 
   body:has(.premium-hero) .mobile-menu summary {
