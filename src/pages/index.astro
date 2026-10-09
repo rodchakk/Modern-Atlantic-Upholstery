@@ -1,12 +1,39 @@
 ---
 import { SERVICES, SITE } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const homeFaqs = [
+  {
+    question: 'What kinds of upholstery does Modern Atlantic handle?',
+    answer: 'Modern Atlantic Upholstery handles automotive, marine, furniture, commercial, and custom upholstery projects from its Matthews, North Carolina shop.',
+  },
+  {
+    question: 'Does Modern Atlantic Upholstery serve Charlotte?',
+    answer: 'Yes. Modern Atlantic is based in Matthews and serves upholstery clients across Charlotte and the surrounding area.',
+  },
+  {
+    question: 'How do I start an upholstery quote?',
+    answer: 'The easiest first step is to send clear photos, the project type, the current condition, and a short description of what you would like to change.',
+  },
+];
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
 <BaseLayout
   title="Upholstery Shop in Matthews & Charlotte, NC"
   description="Automotive, marine, furniture, and commercial upholstery from Modern Atlantic Upholstery in Matthews, serving the Charlotte area. Explore real work or request a quote."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(homeFaqSchema)} />
+
   <section class="premium-hero">
     <div class="premium-hero-media" aria-hidden="true">
       <img src="/legacy-repo/moto.jpg" alt="" decoding="async" />
@@ -135,6 +162,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img src="/legacy-repo/Commercial.jpg" alt="Real commercial upholstery project by Modern Atlantic Upholstery" loading="lazy" decoding="async" />
           <figcaption>Commercial</figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="premium-local">
+    <div class="container premium-local-grid">
+      <div>
+        <p class="premium-kicker premium-kicker-dark">Matthews craft. Charlotte reach.</p>
+        <h2>Local upholstery with a specialist’s eye.</h2>
+        <p>
+          Modern Atlantic Upholstery works from Matthews, North Carolina and serves clients
+          across the Charlotte area. The shop handles automotive, marine, furniture, and
+          commercial projects with the same project-first approach.
+        </p>
+      </div>
+      <div class="premium-local-cards">
+        <a href="/contact/">
+          <small>Visit the shop</small>
+          <strong>616 Arrow Drive Unit C<br />Matthews, NC 28104</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href={"tel:" + SITE.phoneHref}>
+          <small>Call Modern Atlantic</small>
+          <strong>{SITE.phoneDisplay}</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+        <div>
+          <small>Google reputation</small>
+          <strong>{SITE.google.rating} ★ · {SITE.google.reviewCount} reviews</strong>
+          <span>Existing customer proof, preserved through the rebuild.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-home-faq">
+    <div class="container premium-home-faq-grid">
+      <div>
+        <p class="premium-kicker premium-kicker-dark">Before you reach out</p>
+        <h2>A few useful answers.</h2>
+      </div>
+      <div class="premium-faq-list">
+        {homeFaqs.map((faq) => (
+          <details>
+            <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
