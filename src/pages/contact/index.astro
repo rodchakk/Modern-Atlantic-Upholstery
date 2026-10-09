@@ -12,47 +12,60 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
   title="Request an Upholstery Quote"
   description="Contact Modern Atlantic Upholstery in Matthews, NC. Call, email project photos, get directions, or prepare a quote request for automotive, marine, furniture, or commercial upholstery."
 >
-  <section class="contact-hero section-dark">
-    <div class="container contact-hero-grid">
+  <section class="premium-contact-hero">
+    <div class="container premium-contact-hero-grid">
       <div>
-        <p class="eyebrow eyebrow-light">Request a quote</p>
-        <h1>Show us what you’re working on.</h1>
-        <p class="lede lede-light">A few useful details make the first conversation much better. Send photos, identify the type of project, and tell us what you want to change.</p>
+        <p class="premium-kicker">Request a quote</p>
+        <h1>Start with the piece.<br />Then the possibilities.</h1>
+        <p class="premium-page-lede">
+          Send photos, tell us what you want to change, and give us enough context to understand the project.
+        </p>
       </div>
-      <div class="contact-direct">
-        <a href={`tel:${SITE.phoneHref}`}><span>Call</span><strong>{SITE.phoneDisplay}</strong></a>
-        <a href={emailHref}><span>Email</span><strong>{SITE.email}</strong></a>
+      <div class="premium-contact-actions">
+        <a href={`tel:${SITE.phoneHref}`}><small>Call the shop</small><strong>{SITE.phoneDisplay}</strong><span aria-hidden="true">→</span></a>
+        <a href={emailHref}><small>Email photos</small><strong>{SITE.email}</strong><span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <section class="section section-paper" id="quote-start">
-    <div class="container quote-prep-grid">
+  <section class="premium-contact-prep">
+    <div class="container premium-contact-prep-grid">
       <div>
-        <p class="eyebrow">Before you send it</p>
-        <h2>Include enough information to understand the project.</h2>
+        <p class="premium-kicker premium-kicker-dark">What to send</p>
+        <h2>Four details make the first conversation better.</h2>
       </div>
-      <div class="quote-checklist">
-        <div><span>01</span><p><strong>Project type</strong><br />Automotive, marine, furniture, commercial, or something custom.</p></div>
-        <div><span>02</span><p><strong>Clear photos</strong><br />Show the full piece or interior plus the areas you want repaired or changed.</p></div>
-        <div><span>03</span><p><strong>What you want</strong><br />Tell us whether the goal is restoration, replacement, a new look, or custom work.</p></div>
-        <div><span>04</span><p><strong>Best contact</strong><br />Include the phone number or email where you prefer to continue the conversation.</p></div>
-      </div>
+      <ol>
+        <li><span>01</span><div><strong>Project type</strong><p>Automotive, marine, furniture, commercial, or something custom.</p></div></li>
+        <li><span>02</span><div><strong>Clear photos</strong><p>Show the full piece or interior and the areas you want repaired or changed.</p></div></li>
+        <li><span>03</span><div><strong>Your goal</strong><p>Restoration, replacement, a new look, improved comfort, or custom work.</p></div></li>
+        <li><span>04</span><div><strong>Best contact</strong><p>Phone or email — whichever is easiest for continuing the conversation.</p></div></li>
+      </ol>
     </div>
   </section>
 
-  <section class="section contact-details-section">
-    <div class="container contact-cards">
-      <article><p class="eyebrow">Service center</p><h2>{SITE.address.street}<br />{SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}</h2><a class="text-link" href={mapsHref} rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a></article>
-      <article><p class="eyebrow">Call</p><h2><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></h2><p>For a direct conversation about the project.</p></article>
-      <article><p class="eyebrow">Email</p><h2><a href={emailHref}>{SITE.email}</a></h2><p>Useful when you want to include photos and written details.</p></article>
+  <section class="premium-contact-details">
+    <div class="container premium-contact-detail-grid">
+      <article>
+        <p class="premium-kicker premium-kicker-dark">Service center</p>
+        <h2>{SITE.address.street}<br />{SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}</h2>
+        <a class="premium-text-link premium-text-link-dark" href={mapsHref} rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+      </article>
+      <article>
+        <p class="premium-kicker premium-kicker-dark">Direct contact</p>
+        <a class="premium-contact-big" href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a>
+        <a class="premium-contact-big premium-contact-email" href={emailHref}>{SITE.email}</a>
+      </article>
     </div>
   </section>
 
-  <section class="section quote-form-placeholder">
-    <div class="container placeholder-panel">
-      <div><p class="eyebrow">Send project photos</p><h2>Email is a simple way to show us the details.</h2></div>
-      <p>Attach clear photos, identify the project type, and tell us what you want repaired, restored, or changed. If you prefer to talk through the project first, call <a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a>.</p>
+  <section class="premium-contact-photo">
+    <div class="container premium-contact-photo-inner">
+      <div>
+        <p class="premium-kicker">The easiest first step</p>
+        <h2>Send us a photo of your project.</h2>
+        <p>Photos quickly show scale, condition, material, and the details that are hard to explain over the phone.</p>
+      </div>
+      <a class="premium-button premium-button-gold" href={emailHref}>Email project photos <span aria-hidden="true">→</span></a>
     </div>
   </section>
 </BaseLayout>
