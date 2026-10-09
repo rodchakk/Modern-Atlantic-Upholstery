@@ -1,7 +1,4 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import QuoteCta from '../../components/QuoteCta.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
 import { SERVICES } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
@@ -10,41 +7,76 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   title="Upholstery Services in Matthews & Charlotte, NC"
   description="Explore automotive, marine, furniture, and commercial upholstery services from Modern Atlantic Upholstery in Matthews, North Carolina."
 >
-  <PageIntro
-    eyebrow="Our services"
-    title="Upholstery for vehicles, boats, furniture, and commercial spaces."
-    lede="Modern Atlantic handles a broad range of upholstery projects from its Matthews service center. Choose the category closest to your project, then send us the details so we can understand what you need."
-    image="/legacy-repo/Commercial.jpg"
-    imageAlt="Completed upholstery project by Modern Atlantic Upholstery"
-  />
-
-  <section class="section section-paper">
-    <div class="container service-grid">
-      {SERVICES.map((service) => (
-        <ServiceCard
-          title={service.name}
-          description={service.short}
-          href={service.href}
-          image={service.image}
-          imageAlt={`Modern Atlantic ${service.name.toLowerCase()} project`}
-        />
-      ))}
+  <section class="premium-page-hero premium-page-hero-services">
+    <div class="premium-page-hero-media" aria-hidden="true">
+      <img src="/legacy-repo/Commercial.jpg" alt="" decoding="async" />
+    </div>
+    <div class="premium-page-hero-shade"></div>
+    <div class="container premium-page-hero-inner">
+      <p class="premium-kicker">Our services</p>
+      <h1>Four worlds.<br />One standard.</h1>
+      <p class="premium-page-lede">
+        Automotive, marine, furniture, and commercial upholstery — different environments,
+        the same obsession with fit, finish, and detail.
+      </p>
+      <a class="premium-button premium-button-gold" href="/contact/">Start a project <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container process-grid">
-      <div>
-        <p class="eyebrow">How to start</p>
-        <h2>A useful quote starts with useful context.</h2>
+  <section class="premium-services premium-services-page">
+    <div class="container">
+      <div class="premium-section-heading">
+        <div>
+          <p class="premium-kicker premium-kicker-dark">Choose your project</p>
+          <h2>Built around what the piece needs.</h2>
+        </div>
+        <p>
+          Start with the category closest to your project. We use the photos, condition,
+          materials, and intended use to understand the right direction before the work begins.
+        </p>
       </div>
-      <ol class="process-list">
-        <li><span>01</span><div><h3>Show us the project</h3><p>Send a few clear photos and tell us what the item, vehicle, or space is.</p></div></li>
-        <li><span>02</span><div><h3>Tell us what you want to change</h3><p>Describe the condition, the look you are after, and any details that matter to you.</p></div></li>
-        <li><span>03</span><div><h3>Choose how to continue</h3><p>Call, email, or start the quote request and we will use the information to move the conversation forward.</p></div></li>
+
+      <div class="premium-service-grid premium-service-grid-large">
+        {SERVICES.map((service, index) => (
+          <a class="premium-service-card premium-service-card-large" href={service.href}>
+            <img src={service.image} alt={`Modern Atlantic ${service.name.toLowerCase()} project`} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+            <span class="premium-service-shade"></span>
+            <span class="premium-service-index">0{index + 1}</span>
+            <span class="premium-service-copy">
+              <strong>{service.name}</strong>
+              <small>{service.short}</small>
+            </span>
+            <span class="premium-service-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-process">
+    <div class="container premium-process-grid">
+      <div>
+        <p class="premium-kicker">From idea to finish</p>
+        <h2>A better result starts before the first stitch.</h2>
+      </div>
+      <ol class="premium-process-list">
+        <li><span>01</span><div><h3>Show us the project.</h3><p>Send clear photos and identify the vehicle, boat, furniture piece, or commercial space.</p></div></li>
+        <li><span>02</span><div><h3>Tell us what needs to change.</h3><p>Condition, style, comfort, restoration goals, and the details that matter to you.</p></div></li>
+        <li><span>03</span><div><h3>Build the right direction.</h3><p>Materials and approach should fit the project instead of forcing every job into the same package.</p></div></li>
       </ol>
     </div>
   </section>
 
-  <QuoteCta />
+  <section class="premium-quote premium-quote-compact">
+    <div class="container premium-quote-grid">
+      <div>
+        <p class="premium-kicker">Ready when you are</p>
+        <h2>Show us what you want to transform.</h2>
+      </div>
+      <div class="premium-quote-actions">
+        <p>Send photos and project details so we can start with useful context.</p>
+        <a class="premium-button premium-button-gold" href="/contact/">Request a quote <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
