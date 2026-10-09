@@ -1,12 +1,26 @@
 ---
 import { SITE } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Victor Terzi',
+  jobTitle: 'Owner and Upholsterer',
+  worksFor: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+  },
+  knowsAbout: ['Automotive upholstery', 'Marine upholstery', 'Furniture upholstery', 'Commercial upholstery'],
+};
 ---
 
 <BaseLayout
   title="About Victor Terzi & Modern Atlantic Upholstery"
   description="Meet Victor Terzi and learn about the automotive roots, restoration mindset, and hands-on upholstery craft behind Modern Atlantic Upholstery in Matthews, NC."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
   <section class="premium-about-hero">
     <div class="container premium-about-hero-grid">
       <div class="premium-about-copy">
