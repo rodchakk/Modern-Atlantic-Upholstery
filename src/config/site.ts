@@ -29,25 +29,25 @@ export const SERVICES = [
     name: 'Automotive Upholstery',
     href: '/automotive-upholstery/',
     short: 'Seats, headliners, interior panels, restoration, and custom automotive interior work.',
-    image: '/brand/generated/automotive-copper-stitch.webp',
+    image: '/brand/generated/automotive-copper-stitch.png',
   },
   {
     name: 'Marine Upholstery',
     href: '/marine-upholstery/',
     short: 'Boat seating, cushions, and custom marine upholstery built around the way the space is used.',
-    image: '/brand/generated/marine-sunset.webp',
+    image: '/brand/generated/marine-sunset.png',
   },
   {
     name: 'Furniture Upholstery',
     href: '/furniture-upholstery/',
     short: 'Reupholstery for chairs, sofas, dining furniture, and pieces worth giving a second life.',
-    image: '/real-work/furniture-tufted-chair-ottoman.webp',
+    image: '/brand/generated/tufted-reading-chair.png',
   },
   {
     name: 'Commercial Upholstery',
     href: '/commercial-upholstery/',
     short: 'Seating and furniture upholstery for businesses, hospitality spaces, and shared environments.',
-    image: '/brand/generated/commercial-banquette.webp',
+    image: '/brand/generated/commercial-banquette.png',
   },
 ] as const;
 
