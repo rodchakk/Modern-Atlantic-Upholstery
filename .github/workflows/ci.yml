@@ -2,8 +2,6 @@ name: MAU V2 Foundation CI
 
 on:
   pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
