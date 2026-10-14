@@ -41,7 +41,7 @@ export const SERVICES = [
     name: 'Furniture Upholstery',
     href: '/furniture-upholstery/',
     short: 'Reupholstery for chairs, sofas, dining furniture, and pieces worth giving a second life.',
-    image: '/brand/generated/tufted-reading-chair.png',
+    image: '/brand/review-work/furniture-tufted-chair-ottoman-enhanced.png',
   },
   {
     name: 'Commercial Upholstery',
