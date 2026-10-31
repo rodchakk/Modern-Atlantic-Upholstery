@@ -43,6 +43,20 @@ for (const [route, file] of pages) {
     failures.push(`${file}: staging build must be noindex, nofollow`);
   }
 
+  if (route === '' && !html.includes('aria-label="Send us a photo to start a quote"')) {
+    failures.push('index.html: compact floating photo quote CTA is missing');
+  }
+  if (route === 'contact/' && !html.includes('https://wa.me/17042477382')) {
+    failures.push('contact/index.html: WhatsApp direct contact link is missing');
+  }
+
+  if (!html.includes('class="mobile-menu mau-editorial-menu"')) {
+    failures.push(`${file}: editorial mobile menu is missing`);
+  }
+  if (!html.includes('EXPLORE / MAU') || !html.includes('Start a project')) {
+    failures.push(`${file}: editorial menu navigation or project CTA is missing`);
+  }
+
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
   if (h1Count !== 1) failures.push(`${file}: expected exactly one h1, found ${h1Count}`);
 
@@ -53,9 +67,10 @@ for (const [route, file] of pages) {
   }
 
   const imageTags = html.match(/<img\b[^>]*>/g) ?? [];
+  // Decorative images intentionally use alt=""; all images must still declare an alt attribute.
   for (const tag of imageTags) {
-    if (!/\salt=("[^"]+"|'[^']+')/.test(tag)) {
-      failures.push(`${file}: image missing non-empty alt text`);
+    if (!/\salt=("[^"]*"|'[^']*')/.test(tag)) {
+      failures.push(`${file}: image missing alt attribute`);
     }
   }
 

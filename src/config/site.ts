@@ -29,25 +29,25 @@ export const SERVICES = [
     name: 'Automotive Upholstery',
     href: '/automotive-upholstery/',
     short: 'Seats, headliners, interior panels, restoration, and custom automotive interior work.',
-    image: '/legacy-repo/moto.jpg',
+    image: '/brand/generated/automotive-copper-stitch.png',
   },
   {
     name: 'Marine Upholstery',
     href: '/marine-upholstery/',
     short: 'Boat seating, cushions, and custom marine upholstery built around the way the space is used.',
-    image: '/legacy-repo/bout.jpg',
+    image: '/brand/generated/marine-sunset.png',
   },
   {
     name: 'Furniture Upholstery',
     href: '/furniture-upholstery/',
     short: 'Reupholstery for chairs, sofas, dining furniture, and pieces worth giving a second life.',
-    image: '/legacy-repo/sofas.jpg',
+    image: '/brand/review-work/furniture-tufted-chair-ottoman-enhanced.png',
   },
   {
     name: 'Commercial Upholstery',
     href: '/commercial-upholstery/',
     short: 'Seating and furniture upholstery for businesses, hospitality spaces, and shared environments.',
-    image: '/legacy-repo/Commercial.jpg',
+    image: '/brand/generated/commercial-banquette.png',
   },
 ] as const;
 
@@ -57,3 +57,6 @@ export const PRIMARY_NAV = [
   { label: 'About', href: '/about-us/' },
   { label: 'Contact', href: '/contact/' },
 ] as const;
+
+// Uses the public shop phone number; confirm that WhatsApp is enabled for it before production.
+export const WHATSAPP_HREF = `https://wa.me/${SITE.phoneHref.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I would like a quote for an upholstery project.')}`;
