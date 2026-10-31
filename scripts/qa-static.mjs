@@ -60,9 +60,10 @@ for (const [route, file] of pages) {
   }
 
   const imageTags = html.match(/<img\b[^>]*>/g) ?? [];
+  // Decorative images intentionally use alt=""; all images must still declare an alt attribute.
   for (const tag of imageTags) {
-    if (!/\salt=("[^"]+"|'[^']+')/.test(tag)) {
-      failures.push(`${file}: image missing non-empty alt text`);
+    if (!/\salt=("[^"]*"|'[^']*')/.test(tag)) {
+      failures.push(`${file}: image missing alt attribute`);
     }
   }
 
