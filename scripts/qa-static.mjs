@@ -50,6 +50,13 @@ for (const [route, file] of pages) {
     failures.push('contact/index.html: WhatsApp direct contact link is missing');
   }
 
+  if (!html.includes('class="mobile-menu mau-editorial-menu"')) {
+    failures.push(`${file}: editorial mobile menu is missing`);
+  }
+  if (!html.includes('EXPLORE / MAU') || !html.includes('Start a project')) {
+    failures.push(`${file}: editorial menu navigation or project CTA is missing`);
+  }
+
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
   if (h1Count !== 1) failures.push(`${file}: expected exactly one h1, found ${h1Count}`);
 

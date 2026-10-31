@@ -2,6 +2,7 @@
 import { PRIMARY_NAV, SITE } from '../config/site';
 
 const currentPath = Astro.url.pathname;
+const mobileNav = [{ label: 'Home', href: '/' }, ...PRIMARY_NAV];
 const isActive = (href: string) =>
   href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
@@ -32,26 +33,73 @@ const isActive = (href: string) =>
       <a class="button button-small button-light" href="/contact/">Get a quote</a>
     </div>
 
-    <details class="mobile-menu">
-      <summary aria-label="Open navigation">
-        <span>Menu</span>
-        <span class="menu-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+    <details class="mobile-menu mau-editorial-menu" id="mau-editorial-menu">
+      <summary aria-label="Toggle navigation menu">
+        <span class="mau-menu-toggle-text">
+          <span class="mau-menu-open-text">Menu</span>
+          <span class="mau-menu-close-text">Close</span>
+        </span>
+        <span class="mau-menu-glyph" aria-hidden="true"><i></i><i></i></span>
       </summary>
-      <nav aria-label="Mobile navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          {
-            PRIMARY_NAV.map((item) => (
-              <li>
-                <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <a class="button button-light mobile-quote" href="/contact/">Get a quote</a>
-      </nav>
+
+      <div class="mau-menu-panel">
+        <div class="mau-menu-wrap">
+          <div class="mau-menu-main">
+            <div class="mau-menu-eyebrow"><span>EXPLORE / MAU</span></div>
+            <nav class="mau-editorial-nav" aria-label="Mobile navigation">
+              <ul class="mau-nav-list">
+                {
+                  mobileNav.map((item, index) => (
+                    <li>
+                      <a class:list={['mau-nav-item', isActive(item.href) && 'is-current']}
+                         href={item.href}
+                         aria-current={isActive(item.href) ? 'page' : undefined}>
+                        <span class="mau-nav-num">{String(index + 1).padStart(2, '0')}</span>
+                        <span class="mau-nav-label">{item.label}</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true" focusable="false">
+                          <path d="M5 19 19 5M7 5h12v12" />
+                        </svg>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+
+            <div class="mau-menu-bottom">
+              <a class="mau-menu-project-link" href="/contact/">
+                <span><small>LET'S GET TO WORK</small><strong>Start a project</strong></span>
+                <span class="mau-menu-project-arrow" aria-hidden="true">↗</span>
+              </a>
+              <div class="mau-menu-utility">
+                <span><small>MATTHEWS, NC</small>Serving Charlotte &amp; surrounding areas</span>
+                <a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="mau-menu-aside" aria-label="Our approach">
+            <span class="mau-menu-aside-rule"></span>
+            <p class="mau-menu-aside-title">Built by hand.<br />Made to last.</p>
+            <p class="mau-menu-aside-copy">Every piece has a story. We help give it a beautiful next chapter.</p>
+            <span class="mau-menu-aside-brand">Modern Atlantic Upholstery</span>
+          </aside>
+        </div>
+      </div>
     </details>
   </div>
 </header>
+
+<script is:inline>
+  // Native <details> handles tap, keyboard and menu state without external dependencies.
+  // Escape should also close the full-screen menu and return focus to its trigger.
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const menu = document.getElementById('mau-editorial-menu');
+    if (!menu?.open) return;
+    menu.open = false;
+    menu.querySelector('summary')?.focus();
+  });
+</script>
