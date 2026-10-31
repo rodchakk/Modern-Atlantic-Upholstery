@@ -812,13 +812,17 @@ body:has(.premium-hero) .header-inner {
 
   .premium-hero-inner {
     min-height: 48rem;
-    padding-top: 7.5rem;
+    /* Position the headline below the overlaid logo rather than pushing
+       the entire copy to the bottom of the hero on mobile. */
+    justify-content: flex-start;
+    padding-top: 8rem;
     padding-bottom: 1rem;
   }
 
   .premium-hero-copy {
     width: 100%;
-    padding-bottom: 2.3rem;
+    margin-top: 0;
+    padding-bottom: 1.8rem;
   }
 
   .premium-kicker {
@@ -850,7 +854,9 @@ body:has(.premium-hero) .header-inner {
   }
 
   .premium-proof {
-    margin-top: 0;
+    /* Keep the review/location strip at the bottom when there is room;
+       on shorter phones, let the section grow naturally without overlap. */
+    margin-top: auto;
   }
 
   .premium-proof > div {
