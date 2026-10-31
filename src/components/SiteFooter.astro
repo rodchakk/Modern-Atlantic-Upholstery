@@ -1,5 +1,5 @@
 ---
-import { SERVICES, SITE } from '../config/site';
+import { SERVICES, SITE, WHATSAPP_HREF } from '../config/site';
 
 const year = new Date().getFullYear();
 const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -41,6 +41,7 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
       <h3>Contact</h3>
       <p><a href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a></p>
       <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p><a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
     </div>
     <div>
       <h3>Follow</h3>

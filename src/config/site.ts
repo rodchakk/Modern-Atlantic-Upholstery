@@ -57,3 +57,6 @@ export const PRIMARY_NAV = [
   { label: 'About', href: '/about-us/' },
   { label: 'Contact', href: '/contact/' },
 ] as const;
+
+// Uses the public shop phone number; confirm that WhatsApp is enabled for it before production.
+export const WHATSAPP_HREF = `https://wa.me/${SITE.phoneHref.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I would like a quote for an upholstery project.')}`;

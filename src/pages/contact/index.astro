@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../../config/site';
+import { SITE, WHATSAPP_HREF } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -10,7 +10,7 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
 
 <BaseLayout
   title="Request an Upholstery Quote"
-  description="Contact Modern Atlantic Upholstery in Matthews, NC. Call, email project photos, get directions, or prepare a quote request for automotive, marine, furniture, or commercial upholstery."
+  description="Contact Modern Atlantic Upholstery in Matthews, NC. Call, email, or message us on WhatsApp to discuss automotive, marine, furniture, or commercial upholstery."
 >
   <section class="premium-contact-hero">
     <div class="container premium-contact-hero-grid">
@@ -24,6 +24,9 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
       <div class="premium-contact-actions">
         <a href={`tel:${SITE.phoneHref}`}><small>Call the shop</small><strong>{SITE.phoneDisplay}</strong><span aria-hidden="true">→</span></a>
         <a href={emailHref}><small>Email photos</small><strong>{SITE.email}</strong><span aria-hidden="true">→</span></a>
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" aria-label={`Message Modern Atlantic Upholstery on WhatsApp at ${SITE.phoneDisplay}`}>
+          <small>WhatsApp</small><strong>{SITE.phoneDisplay}</strong><span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
   </section>
@@ -38,7 +41,7 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
         <li><span>01</span><div><strong>Project type</strong><p>Automotive, marine, furniture, commercial, or something custom.</p></div></li>
         <li><span>02</span><div><strong>Clear photos</strong><p>Show the full piece or interior and the areas you want repaired or changed.</p></div></li>
         <li><span>03</span><div><strong>Your goal</strong><p>Restoration, replacement, a new look, improved comfort, or custom work.</p></div></li>
-        <li><span>04</span><div><strong>Best contact</strong><p>Phone or email — whichever is easiest for continuing the conversation.</p></div></li>
+        <li><span>04</span><div><strong>Best contact</strong><p>Phone, email, or WhatsApp — whichever is easiest for continuing the conversation.</p></div></li>
       </ol>
     </div>
   </section>
@@ -95,6 +98,7 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
             <label><input type="radio" name="preferred" value="Call" checked /> Call</label>
             <label><input type="radio" name="preferred" value="Text" /> Text</label>
             <label><input type="radio" name="preferred" value="Email" /> Email</label>
+            <label><input type="radio" name="preferred" value="WhatsApp" /> WhatsApp</label>
           </div>
         </fieldset>
 
@@ -117,6 +121,9 @@ const emailHref = `mailto:${SITE.email}?subject=${encodeURIComponent('Modern Atl
         <p class="premium-kicker premium-kicker-dark">Direct contact</p>
         <a class="premium-contact-big" href={`tel:${SITE.phoneHref}`}>{SITE.phoneDisplay}</a>
         <a class="premium-contact-big premium-contact-email" href={emailHref}>{SITE.email}</a>
+        <a class="premium-contact-big premium-contact-whatsapp" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">
+          WhatsApp <small>{SITE.phoneDisplay}</small>
+        </a>
       </article>
     </div>
   </section>

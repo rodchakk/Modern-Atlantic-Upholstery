@@ -43,6 +43,13 @@ for (const [route, file] of pages) {
     failures.push(`${file}: staging build must be noindex, nofollow`);
   }
 
+  if (route === '' && !html.includes('aria-label="Send us a photo to start a quote"')) {
+    failures.push('index.html: compact floating photo quote CTA is missing');
+  }
+  if (route === 'contact/' && !html.includes('https://wa.me/17042477382')) {
+    failures.push('contact/index.html: WhatsApp direct contact link is missing');
+  }
+
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
   if (h1Count !== 1) failures.push(`${file}: expected exactly one h1, found ${h1Count}`);
 
