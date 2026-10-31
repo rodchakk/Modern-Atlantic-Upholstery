@@ -1255,6 +1255,48 @@ body:has(.premium-hero) .header-inner {
   line-height: .86;
 }
 
+.premium-about-recognition {
+  margin-top: 1.7rem;
+  padding: .35rem 0 .35rem 1.2rem;
+  border-left: 2px solid var(--mau-copper, #b88c65);
+}
+
+.premium-about-recognition-label {
+  display: block;
+  margin-bottom: .38rem;
+  color: #ddb087;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.premium-about-recognition p {
+  max-width: 33rem;
+  margin: 0;
+  color: rgba(255,255,255,.76);
+  font-size: .98rem;
+  line-height: 1.58;
+}
+
+.premium-about-recognition strong {
+  color: #fff;
+  font-weight: 750;
+}
+
+.premium-about-visual {
+  min-width: 0;
+  width: 100%;
+}
+
+.premium-about-visual-credit {
+  margin: .7rem 0 0;
+  color: rgba(255,255,255,.43);
+  font-size: .65rem;
+  letter-spacing: .06em;
+  text-align: right;
+}
+
 .premium-about-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1639,8 +1681,13 @@ body:has(.premium-hero) .header-inner {
     grid-template-columns: 1fr;
   }
 
+  .premium-about-visual {
+    max-width: 40rem;
+    justify-self: center;
+  }
+
   .premium-about-image,
-  .premium-about-image img { min-height: 30rem; }
+  .premium-about-image img { min-height: 27rem; }
 
   .premium-contact-photo-inner {
     grid-template-columns: 1fr;
@@ -1669,10 +1716,50 @@ body:has(.premium-hero) .header-inner {
   .premium-process-grid { gap: 2.2rem; }
   .premium-process h2 { font-size: 3.3rem; }
 
-  .premium-about-hero { padding: 8rem 0 3.5rem; }
-  .premium-about-copy h1 { font-size: clamp(4.3rem,19vw,6rem); }
-  .premium-about-image,
-  .premium-about-image img { min-height: 25rem; }
+  .premium-about-hero { padding: 7rem 0 3rem; }
+  .premium-about-hero-grid { gap: 2rem; }
+  .premium-about-copy h1 {
+    font-size: clamp(3.6rem, 15vw, 4.8rem);
+    line-height: .92;
+  }
+  .premium-about-copy .premium-page-lede {
+    margin: 1.25rem 0 1rem;
+    font-size: .98rem;
+    line-height: 1.55;
+  }
+  .premium-about-recognition {
+    margin-top: 1.15rem;
+    padding-left: .95rem;
+  }
+  .premium-about-recognition p {
+    font-size: .93rem;
+    line-height: 1.52;
+  }
+  .premium-about-meta { margin-top: 1.6rem; }
+  .premium-about-meta > div { padding-top: .9rem; }
+  .premium-about-visual { max-width: 22rem; }
+  .premium-about-image {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 5 / 4;
+    border-radius: .95rem;
+  }
+  .premium-about-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: 52% 43%;
+    filter: saturate(.88) contrast(1.1);
+  }
+  .premium-about-visual-credit {
+    margin-top: .6rem;
+    font-size: .6rem;
+    text-align: center;
+  }
 
   .premium-about-story { padding-block: 4.5rem; }
   .premium-about-story h2 { font-size: 3.2rem; }
