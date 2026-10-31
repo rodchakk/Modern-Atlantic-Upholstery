@@ -1650,35 +1650,6 @@ body:has(.premium-hero) .header-inner {
   line-height: 1.3;
 }
 
-.premium-contact-photo {
-  padding-block: clamp(5rem,9vw,8rem);
-  background: var(--mau-ink);
-  color: #fff;
-}
-
-.premium-contact-photo-inner {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) auto;
-  gap: 2rem;
-  align-items: end;
-}
-
-.premium-contact-photo h2 {
-  max-width: 11ch;
-  margin: 0;
-  color: #fff;
-  font-family: "Iowan Old Style", Georgia, serif;
-  font-size: clamp(3rem,5vw,5rem);
-  font-weight: 500;
-  line-height: .94;
-}
-
-.premium-contact-photo p:not(.premium-kicker) {
-  max-width: 36rem;
-  margin: 1.2rem 0 0;
-  color: rgba(255,255,255,.6);
-}
-
 @media (max-width: 62rem) {
   .premium-process-grid,
   .premium-about-hero-grid,
@@ -1700,9 +1671,6 @@ body:has(.premium-hero) .header-inner {
   .premium-about-image,
   .premium-about-image img { min-height: 27rem; }
 
-  .premium-contact-photo-inner {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 44rem) {
@@ -1815,8 +1783,6 @@ body:has(.premium-hero) .header-inner {
     padding: 2rem 1.4rem;
   }
 
-  .premium-contact-photo { padding-block: 4.5rem; }
-  .premium-contact-photo h2 { font-size: 3.2rem; }
 }
 
 
